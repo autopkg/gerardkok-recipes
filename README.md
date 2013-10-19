@@ -1,4 +1,4 @@
 autopkg-recipes
 ===============
 
-Autopkg recipes
+https://github.com/autopkg/autopkg/ recipes

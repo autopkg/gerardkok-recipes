@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Molded after https://github.com/hjuutilainen/autopkg-recipes/blob/master/Vagrant/VagrantURLProvider.py
+
 import re
 import urllib
 import urllib2
@@ -26,8 +28,8 @@ __all__ = ["ClementineURLProvider"]
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/536.28.10 (KHTML, like Gecko) Version/6.0.3 Safari/536.28.10'
 MAIN_DOWNLOAD_URL = "http://www.clementine-player.org/downloads"
 
-# Provided the user-agent suggests OS X, the download url is the one in '<div class="best-download thindownload">'
-# Example RE we're looking for:
+# Provided the user-agent suggests OS X, the download url is the one in the '<div class="best-download thindownload">' tag
+# The RE should match lines like the following:
 # <div class="best-download thindownload">
 #      <a href="http://clementine-player.googlecode.com/files/clementine-1.2.0.dmg">
 re_dmg_url = re.compile(r'<div class=[\'\"]best-download thindownload[\'\"]>\s*?<a href=[\'\"](?P<dmg_url>http://clementine-player.googlecode.com/files/clementine-[0-9\.]+\.dmg)[\'\"]>', re.MULTILINE)

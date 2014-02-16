@@ -10,19 +10,31 @@
 	<dict>
 		<key>NAME</key>
 		<string>Clementine</string>
+		<key>SPARKLE_FEED_URL</key>
+        <string>https://clementine-data.appspot.com/sparkle</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>Process</key>
 	<array>
-		<dict>
-			<key>Processor</key>
-			<string>ClementineURLProvider</string>
-		</dict>
-		<dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
+    	<dict>
+        	<key>Processor</key>
+        	<string>SparkleUpdateInfoProvider</string>
+        	<key>Arguments</key>
+        	<dict>
+            	<key>appcast_url</key>
+            	<string>%SPARKLE_FEED_URL%</string>
+        	</dict>
+    		</dict>
+    		<dict>
+        		<key>Processor</key>
+        		<string>URLDownloader</string>
+        		<key>Arguments</key>
+        		<dict>
+            		<key>filename</key>
+            		<string>%NAME%.dmg</string>
+        		</dict>
+    		</dict>
 		<dict>
 			<key>Processor</key>
 			<string>EndOfCheckPhase</string>

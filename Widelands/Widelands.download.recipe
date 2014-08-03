@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>Description</key>
-    <string>Download recipe for Postbox.</string>
+    <string>Download recipe for Widelands.</string>
     <key>Identifier</key>
-    <string>com.github.gerardkok.download.Postbox</string>
+    <string>com.github.gerardkok.download.Widelands</string>
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>Postbox</string>
+        <string>Widelands</string>
     </dict>
     <key>MinimumVersion</key>
     <string>0.2.0</string>
@@ -21,18 +21,16 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>http://www.postbox-inc.com/download_success/mac</string>
+				<string>https://wl.widelands.org/wiki/Download</string>
 				<key>re_pattern</key>
-				<string>download_url = \"(/php/download\.php\?a=[0-9]+m)\"</string>
+				<string>(https://launchpad.net/widelands/build[0-9]+/build-[0-9]+/\+download/widelands-build[0-9]+-mac.dmg)</string>
 				<key>result_output_var_name</key>
-				<string>relative_url</string>
+				<string>url</string>
 			</dict>
 		</dict>       
         <dict>
             <key>Arguments</key>
             <dict>
-                <key>url</key>
-                <string>http://postbox-inc.com%relative_url%</string>
                 <key>filename</key>
                 <string>%NAME%.dmg</string>
             </dict>

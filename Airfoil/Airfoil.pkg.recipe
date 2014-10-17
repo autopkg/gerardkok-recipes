@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Downloads Airfoil and packages it.</string>
+        <key>Identifier</key>
+        <string>com.github.gerardkok.pkg.airfoil</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>Airfoil</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.2.0</string>
+        <key>ParentRecipe</key>
+        <string>com.github.gerardkok.download.airfoil</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Processor</key>
+                <string>Unarchiver</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>archive_path</key>
+                    <string>%pathname%</string>
+                    <key>destination_path</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                    <key>purge_destination</key>
+                    <true/>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>PathDeleter</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>path_list</key>
+                    <array>
+                        <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%/Airfoil Speakers.app</string>
+                    </array>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>DmgCreator</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>dmg_root</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%</string>
+                    <key>dmg_path</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+                </dict>
+            </dict>
+        </array>
+    </dict>
+</plist>

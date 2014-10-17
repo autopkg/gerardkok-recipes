@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Downloads Airfoil and imports into Munki.</string>
+        <key>Identifier</key>
+        <string>com.github.gerardkok.munki.airfoil</string>
+        <key>Input</key>
+        <dict>
+            <key>MUNKI_REPO_SUBDIR</key>
+            <string>apps/airfoil</string>
+            <key>NAME</key>
+            <string>Airfoil</string>
+            <key>pkginfo</key>
+            <dict>
+                <key>catalogs</key>
+                <array>
+                    <string>testing</string>
+                </array>
+                <key>description</key>
+                <string>Wireless audio around your house.</string>
+                <key>display_name</key>
+                <string>Airfoil</string>
+                <key>name</key>
+                <string>%NAME%</string>
+                <key>postinstall_script</key>
+                <string>#!/bin/sh
+                    
+PLUGIN_SRC_PATH=/Applications/Airfoil.app/Contents/Frameworks/ExtrasInstaller.framework/Resources/InstantOn/InstantOn.driver.tgz
+PLUGIN_DST_DIR=/Library/Audio/Plug-Ins/HAL
+
+if [ -e "$PLUGIN_SRC_PATH" ]; then
+    /usr/bin/tar -C "$PLUGIN_DST_DIR" -xzf "$PLUGIN_SRC_PATH"
+    /bin/chmod -R go+rX "$PLUGIN_DST_DIR/InstantOn.driver"
+    /usr/sbin/chown -R root:wheel "$PLUGIN_DST_DIR/InstantOn.driver"
+else
+    echo "Expected $"$PLUGIN_DST_DIR/InstantOn.driver", but it was not present in the Airfoil app."
+    exit 1
+fi
+</string>
+                <key>unattended_install</key>
+                <true/>
+                <key>developer</key>
+                <string>Rogue Amoeba</string>
+                <key>category</key>
+                <string>Media</string>
+            </dict>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.2.0</string>
+        <key>ParentRecipe</key>
+        <string>com.github.gerardkok.pkg.airfoil</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>pkg_path</key>
+                    <string>%dmg_path%</string>
+                    <key>repo_subdirectory</key>
+                    <string>%MUNKI_REPO_SUBDIR%</string>
+                </dict>
+                <key>Processor</key>
+                <string>MunkiImporter</string>
+            </dict>
+        </array>
+    </dict>
+</plist>

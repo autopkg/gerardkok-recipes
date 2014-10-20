@@ -10,6 +10,8 @@
         <dict>
             <key>MUNKI_REPO_SUBDIR</key>
             <string>apps/airfoil</string>
+            <key>MUNKI_CATEGORY</key>
+            <string>Media</string>
             <key>NAME</key>
             <string>Airfoil</string>
             <key>pkginfo</key>
@@ -44,7 +46,7 @@ fi
                 <key>developer</key>
                 <string>Rogue Amoeba</string>
                 <key>category</key>
-                <string>Media</string>
+                <string>%MUNKI_CATEGORY%</string>
             </dict>
         </dict>
         <key>MinimumVersion</key>

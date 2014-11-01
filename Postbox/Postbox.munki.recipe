@@ -10,6 +10,8 @@
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps/Postbox</string>
+        <key>MUNKI_CATEGORY</key>
+        <string>Mail Clients</string>
         <key>NAME</key>
         <string>Postbox</string>
         <key>pkginfo</key>
@@ -18,8 +20,12 @@
             <array>
                 <string>testing</string>
             </array>
+            <key>category</key>
+            <string>%MUNKI_CATEGORY%</string>
             <key>description</key>
             <string>Powerful, intuitive, and faster than a scalded monkey, the Postbox email client will help you stay on task, find information quickly and act, not react.</string>
+            <key>developer</key>
+            <string>Postbox, Inc.</string>
             <key>display_name</key>
             <string>Postbox</string>
             <key>name</key>

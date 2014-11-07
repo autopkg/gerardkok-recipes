@@ -23,7 +23,7 @@
                     <key>url</key>
                     <string>http://owncloud.org/install/</string>
                     <key>re_pattern</key>
-                    <string>href=\"(https://download.owncloud.com/desktop/stable/ownCloud-[0-9\.]+.dmg)\"</string>
+                    <string>href=\"(https://download.owncloud.com/desktop/stable/ownCloud-[0-9\.]+.pkg)\"</string>
                     <key>result_output_var_name</key>
                     <string>download_url</string>
                 </dict>
@@ -34,7 +34,7 @@
                     <key>url</key>
                     <string>%download_url%</string>
                     <key>filename</key>
-                    <string>%NAME%.dmg</string>
+                    <string>%NAME%.pkg</string>
                 </dict>
                 <key>Processor</key>
                 <string>URLDownloader</string>
@@ -44,15 +44,19 @@
                 <string>EndOfCheckPhase</string>
             </dict>
             <dict>
-                <key>Processor</key>
-                <string>CodeSignatureVerifier</string>
                 <key>Arguments</key>
                 <dict>
                     <key>input_path</key>
-                    <string>%pathname%/ownCloud.app</string>
-                    <key>requirement</key>
-                    <string>identifier "com.owncloud.desktopclient" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "9B5WD74GWJ"</string>
+                    <string>%pathname%</string>
+                    <key>expected_authority_names</key>
+                    <array>
+                        <string>Developer ID Installer: ownCloud Inc. (9B5WD74GWJ)</string>
+                        <string>Developer ID Certification Authority</string>
+                        <string>Apple Root CA</string>
+                    </array>
                 </dict>
+                <key>Processor</key>
+                <string>CodeSignatureVerifier</string>
             </dict>
         </array>
     </dict>

@@ -21,18 +21,18 @@
 			<key>Arguments</key>
 			<dict>
 				<key>url</key>
-				<string>http://www.postbox-inc.com/download_success/mac</string>
+				<string>https://www.postbox-inc.com/download/success-mac</string>
 				<key>re_pattern</key>
-				<string>download_url = \"(/php/download\.php\?a=[0-9]+m)\"</string>
+				<string>\"(https://s3\.amazonaws\.com/download\.getpostbox\.com/installers/.*\.dmg)\"</string>
 				<key>result_output_var_name</key>
-				<string>relative_url</string>
+				<string>download_url</string>
 			</dict>
 		</dict>       
         <dict>
             <key>Arguments</key>
             <dict>
                 <key>url</key>
-                <string>http://postbox-inc.com%relative_url%</string>
+                <string>%download_url%</string>
                 <key>filename</key>
                 <string>%NAME%.dmg</string>
             </dict>

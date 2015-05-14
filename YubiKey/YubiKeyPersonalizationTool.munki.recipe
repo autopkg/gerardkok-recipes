@@ -25,7 +25,7 @@
             <key>description</key>
             <string>The YubiKey Personalization Tool is used to program the two configuration slots in your YubiKey.</string>
             <key>developer</key>
-            <string>Yubico.</string>
+            <string>Yubico</string>
             <key>display_name</key>
             <string>YubiKey Personalization Tool</string>
             <key>name</key>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Pkg recipe for Python-virtualenv.</string>
+        <key>Identifier</key>
+        <string>com.github.gerardkok.pkg.Python-virtualenv</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>virtualenv</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.4.0</string>
+        <key>ParentRecipe</key>
+        <string>com.github.gerardkok.download.Python-virtualenv</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Processor</key>
+                <string>com.github.autopkg.gerardkok-recipes.SharedProcessors/EasyInstallPkgbuilder</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>modulepath</key>
+                    <string>%pathname%</string>
+                    <key>identifier</key>
+                    <string>nl.gerardkok.%NAME%</string>
+                    <key>version</key>
+                    <string>%version%</string>
+                    <key>pkgpath</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%.pkg</string>
+                </dict>
+                <key>SharedProcessorRepoURL</key>
+                <string>https://github.com/autopkg/gerardkok-recipes</string>
+            </dict>
+        </array>
+    </dict>
+</plist>

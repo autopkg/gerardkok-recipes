@@ -26,12 +26,10 @@
                 <string>%MUNKI_CATEGORY%</string>
                 <key>description</key>
                 <string>%PYTHON_PKG_NAME% Python package.</string>
-                <key>developer</key>
-                <string>MongoDB</string>
                 <key>display_name</key>
                 <string>%NAME%</string>
                 <key>name</key>
-                <string>%PYTHON_PKG_NAME%</string>
+                <string>%NAME%</string>
                 <key>unattended_install</key>
                 <true/>
             </dict>

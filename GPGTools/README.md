@@ -1,1 +1,0 @@
-Work in progress. No support for uninstalling yet, and attempts to verify that the download is legitimate are not yet made.

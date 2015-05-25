@@ -8,7 +8,8 @@ The recipes for Keka and Scribus are just Munki importers for download recipes b
 
 ## GPGTools recipe
 
-Work in progress. The recipe does not add an uninstall script to the munki pkgsinfo yet, and no verification that the download is legititmate is being done yet.
+Work in progress. The recipe does not add an uninstall script to the munki pkgsinfo yet, and no verification that the download is legitimate is being done yet.
+Downloading the suite doesn't work from time to time; trying again usually works for me.
 
 ## SharedProcessors
 

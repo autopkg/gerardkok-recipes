@@ -25,7 +25,7 @@
                     <key>python_pkg_path</key>
                     <string>%pathname%</string>
                     <key>identifier</key>
-                    <string>nl.gerardkok.%NAME%</string>
+                    <string>com.github.autopkg.gerardkok-recipes.Python-%NAME%</string>
                     <key>version</key>
                     <string>%version%</string>
                     <key>pkgpath</key>

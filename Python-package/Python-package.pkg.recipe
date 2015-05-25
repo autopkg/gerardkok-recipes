@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Generic recipe to create an installer for a Python package.</string>
+        <key>Identifier</key>
+        <string>com.github.gerardkok.pkg.Python-package</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>Python-package</string>
+            <key>PYTHON_PKG_NAME</key>
+            <string>pypackage</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.4.0</string>
+        <key>ParentRecipe</key>
+        <string>com.github.gerardkok.download.Python-package</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Processor</key>
+                <string>com.github.autopkg.gerardkok-recipes.SharedProcessors/EasyInstallPkgbuilder</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>python_pkg_path</key>
+                    <string>%pathname%</string>
+                    <key>identifier</key>
+                    <string>com.github.autopkg.gerardkok-recipes.%NAME%</string>
+                    <key>version</key>
+                    <string>%version%</string>
+                    <key>pkgpath</key>
+                    <string>%RECIPE_CACHE_DIR%/%PYTHON_PKG_NAME%.pkg</string>
+                </dict>
+            </dict>
+        </array>
+    </dict>
+</plist>

@@ -31,8 +31,6 @@
                     <key>pkgpath</key>
                     <string>%RECIPE_CACHE_DIR%/%NAME%.pkg</string>
                 </dict>
-                <key>SharedProcessorRepoURL</key>
-                <string>https://github.com/autopkg/gerardkok-recipes</string>
             </dict>
         </array>
     </dict>

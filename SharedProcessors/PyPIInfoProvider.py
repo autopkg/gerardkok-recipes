@@ -24,7 +24,7 @@ class PyPIInfoProvider(Processor):
     """Provides URL and version to the latest update. Requires xmlrpclib."""
     description = __doc__
     input_variables = {
-        "packagename": {
+        "python_package": {
             "required": True,
             "description": "python package name",
         },
@@ -61,7 +61,7 @@ class PyPIInfoProvider(Processor):
 
 
     def main(self):
-        package = self.env['packagename']
+        package = self.env['python_package']
         client = xmlrpclib.ServerProxy('https://pypi.python.org/pypi')
         version = self.get_latest_version(client, package)
         self.env["version"] = version

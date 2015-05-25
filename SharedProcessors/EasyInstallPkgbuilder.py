@@ -27,9 +27,9 @@ class EasyInstallPkgbuilder(Processor):
     """Creates a package that installs a python module using easy_install."""
     description = __doc__
     input_variables = {
-        "modulepath": {
+        "python_pkg_path": {
             "required": True,
-            "description": "Path to a python module",
+            "description": "Path to a python package",
         },
         "identifier": {
             "required": True,
@@ -81,13 +81,13 @@ class EasyInstallPkgbuilder(Processor):
     
 
     def main(self):
-        modulepath = self.env['modulepath']
+        python_pkg_path = self.env['python_pkg_path']
         identifier = self.env['identifier']
         version = self.env['version']
         pkgpath = self.env['pkgpath']
         try:
             scriptsdir = tempfile.mkdtemp()
-            self.make_postinstall_script(scriptsdir, modulepath)
+            self.make_postinstall_script(scriptsdir, python_pkg_path)
             self.pkgbuild(scriptsdir, identifier, version, pkgpath)
         finally:
             shutil.rmtree(scriptsdir)

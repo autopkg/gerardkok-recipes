@@ -20,7 +20,7 @@
                 <string>com.github.autopkg.gerardkok-recipes.SharedProcessors/PyPIInfoProvider</string>
                 <key>Arguments</key>
                 <dict>
-                    <key>module</key>
+                    <key>python_package</key>
                     <string>%NAME%</string>
                 </dict>
             </dict>

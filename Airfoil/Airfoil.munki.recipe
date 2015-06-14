@@ -37,7 +37,7 @@ if [ -e "$PLUGIN_SRC_PATH" ]; then
     /bin/chmod -R go+rX "$PLUGIN_DST_DIR/InstantOn.driver"
     /usr/sbin/chown -R root:wheel "$PLUGIN_DST_DIR/InstantOn.driver"
 else
-    echo "Expected $"$PLUGIN_DST_DIR/InstantOn.driver", but it was not present in the Airfoil app."
+    echo "Expected $PLUGIN_DST_DIR/InstantOn.driver, but it was not present in the Airfoil app."
     exit 1
 fi
 </string>

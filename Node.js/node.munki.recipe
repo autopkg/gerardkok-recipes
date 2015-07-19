@@ -5,7 +5,7 @@
     <key>Description</key>
     <string>Downloads Node.js and imports into Munki.</string>
     <key>Identifier</key>
-    <string>com.github.gerardkok.munki.Nodejs</string>
+    <string>com.github.gerardkok.munki.node</string>
     <key>Input</key>
     <dict>
         <key>MUNKI_REPO_SUBDIR</key>

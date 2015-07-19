@@ -24,7 +24,7 @@ __all__ = ["Sha1sumVerifier"]
 
 
 class Sha1sumVerifier(Processor):
-    description = "Verifies sha1sum of package against the sha1sum found in file."
+    description = "Verifies sha1sum of package against a giving sha1sum. Throws a ProcessorError on mismatch."
     input_variables = {
         "pkgpath": {
             "required": True,

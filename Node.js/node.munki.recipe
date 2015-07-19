@@ -57,7 +57,7 @@
                     <key>installcheck_script</key>
                     <string>#!/bin/sh
                     
-[ ! -x /usr/local/bin/node ] || [ "$((/usr/local/bin/node --version))" != "v%version%" ]
+[ ! -x /usr/local/bin/node ] || [ "$(/usr/local/bin/node --version)" != "v%version%" ]
         </string>
                 </dict>
             </dict>

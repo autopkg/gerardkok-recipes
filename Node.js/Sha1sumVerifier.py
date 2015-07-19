@@ -17,14 +17,13 @@
 
 from autopkglib import Processor, ProcessorError
 import hashlib
-import re
 
 
 __all__ = ["Sha1sumVerifier"]
 
 
 class Sha1sumVerifier(Processor):
-    description = "Verifies sha1sum of package against a giving sha1sum. Throws a ProcessorError on mismatch."
+    description = "Verifies sha1sum of package against a given SHA1 checksum. Throws a ProcessorError on mismatch."
     input_variables = {
         "pkgpath": {
             "required": True,
@@ -62,7 +61,7 @@ class Sha1sumVerifier(Processor):
         if sha1sum_from_pkg == expected:
             self.output("SHA1 checksum matches")
         else:
-            raise ProcessorError('SHA1 checksum mismatch')
+            raise ProcessorError("SHA1 checksum mismatch")
    
 
 if __name__ == '__main__':

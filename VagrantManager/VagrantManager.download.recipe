@@ -1,48 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-    <key>Description</key>
-    <string>Download recipe for Vagrant Manager.</string>
-    <key>Identifier</key>
-    <string>com.github.gerardkok.download.VagrantManager</string>
-    <key>Input</key>
     <dict>
-        <key>NAME</key>
-        <string>VagrantManager</string>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>0.2.0</string>
-    <key>Process</key>
-    <array>
+        <key>Description</key>
+        <string>Download recipe for Vagrant Manager.</string>
+        <key>Identifier</key>
+        <string>com.github.gerardkok.download.VagrantManager</string>
+        <key>Input</key>
         <dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-			<key>Arguments</key>
-			<dict>
-				<key>url</key>
-				<string>https://github.com/lanayotech/vagrant-manager/releases/latest</string>
-				<key>re_pattern</key>
-				<string>href=\"(/lanayotech/vagrant-manager/releases/download/[0-9\.]+/vagrant-manager-[0-9\.]+.dmg)\"</string>
-				<key>result_output_var_name</key>
-				<string>relative_url</string>
-			</dict>
-		</dict>       
-        <dict>
-            <key>Arguments</key>
+            <key>NAME</key>
+            <string>VagrantManager</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.2.0</string>
+        <key>Process</key>
+        <array>
             <dict>
-                <key>url</key>
-                <string>https://github.com%relative_url%</string>
-                <key>filename</key>
-                <string>%NAME%.dmg</string>
+                <key>Processor</key>
+                <string>GitHubReleasesInfoProvider</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>github_repo</key>
+                    <string>lanayotech/vagrant-manager</string>
+                </dict>
             </dict>
-            <key>Processor</key>
-            <string>URLDownloader</string>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
-        </dict>
-    </array>
-</dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>filename</key>
+                    <string>%NAME%.dmg</string>
+                </dict>
+                <key>Processor</key>
+                <string>URLDownloader</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>EndOfCheckPhase</string>
+            </dict>
+        </array>
+    </dict>
 </plist>

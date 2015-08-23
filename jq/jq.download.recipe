@@ -30,7 +30,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>filename</key>
-                    <string>%NAME%.bin</string>
+                    <string>%NAME%</string>
                 </dict>
                 <key>Processor</key>
                 <string>URLDownloader</string>

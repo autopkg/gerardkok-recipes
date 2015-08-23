@@ -21,7 +21,7 @@
         <array>
             <dict>
                 <key>Processor</key>
-                <string>VersionFixer</string>
+                <string>com.github.autopkg.gerardkok-recipes.SharedProcessors/VersionFixer</string>
                 <key>Arguments</key>
                 <dict>
                     <key>version</key>

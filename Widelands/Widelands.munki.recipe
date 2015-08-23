@@ -58,7 +58,7 @@
                     <string>%version%</string>
                 </dict>
                 <key>Processor</key>
-                <string>VersionFixer</string>
+                <string>com.github.autopkg.gerardkok-recipes.SharedProcessors/VersionFixer</string>
             </dict>
             <dict>
                 <key>Arguments</key>

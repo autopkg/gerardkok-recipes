@@ -22,7 +22,8 @@ __all__ = ["VersionFixer"]
 
 
 class VersionFixer(Processor):
-    description = "Extracts version from version strings like '<pkg>-<version>'."
+    """Extracts proper version from strings like '<pkg>-<version>'. If the original can't be split, return the original."""
+    description = __doc__
     input_variables = {
         "version": {
             "required": True,
@@ -35,12 +36,13 @@ class VersionFixer(Processor):
         },
     }
     
-    __doc__ = description
-    
     
     def main(self):
         version = self.env["version"]
-        self.env["fixedversion"] = version.split('-')[1]
+        try:
+            self.env["fixedversion"] = version.split('-')[1]
+        except IndexError:
+            self.env["fixedversion"] = version
    
 
 if __name__ == '__main__':

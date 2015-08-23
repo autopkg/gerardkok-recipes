@@ -18,20 +18,20 @@
 from autopkglib import Processor, ProcessorError
 
 
-__all__ = ["WidelandsVersionFixer"]
+__all__ = ["VersionFixer"]
 
 
-class WidelandsVersionFixer(Processor):
-    description = "Fixes Widelands version string."
+class VersionFixer(Processor):
+    description = "Extracts version from version strings like '<pkg>-<version>'."
     input_variables = {
         "version": {
             "required": True,
-            "description": "Version of Widelands.",
+            "description": "Original version.",
         },
     }
     output_variables = {
         "fixedversion": {
-            "description": "Fixed version of Widelands.",
+            "description": "Fixed version.",
         },
     }
     
@@ -40,10 +40,10 @@ class WidelandsVersionFixer(Processor):
     
     def main(self):
         version = self.env["version"]
-        self.env["fixedversion"] = version.replace("build-", "")
+        self.env["fixedversion"] = version.split('-')[1]
    
 
 if __name__ == '__main__':
-    processor = WidelandsVersionFixer()
+    processor = VersionFixer()
     processor.execute_shell()
     

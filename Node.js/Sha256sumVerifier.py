@@ -19,19 +19,19 @@ from autopkglib import Processor, ProcessorError
 import hashlib
 
 
-__all__ = ["Sha1sumVerifier"]
+__all__ = ["Sha256sumVerifier"]
 
 
-class Sha1sumVerifier(Processor):
-    description = "Verifies sha1sum of package against a given SHA1 checksum. Throws a ProcessorError on mismatch."
+class Sha256sumVerifier(Processor):
+    description = "Verifies sha256sum of package against a given SHA256 checksum. Throws a ProcessorError on mismatch."
     input_variables = {
         "pkgpath": {
             "required": True,
             "description": "Package to checksum.",
         },
-        "expected_sha1sum": {
+        "expected_sha256sum": {
             "required": True,
-            "description": "Expected SHA1 checksum.",
+            "description": "Expected SHA256 checksum.",
         },
     }
     output_variables = {
@@ -40,31 +40,31 @@ class Sha1sumVerifier(Processor):
     __doc__ = description
     
     
-    def sha1sum_from_pkg(self, pkgpath):
-        sha1 = hashlib.sha1()
+    def sha256sum_from_pkg(self, pkgpath):
+        sha256 = hashlib.sha256()
         f = open(pkgpath, 'rb')
         try:
-            sha1.update(f.read())
+            sha256.update(f.read())
         finally:
             f.close()
-        return sha1.hexdigest()
+        return sha256.hexdigest()
     
     
     def main(self):
         pkgpath = self.env['pkgpath']
         self.output('Using pkgpath %s' % pkgpath)
-        expected = self.env['expected_sha1sum']
-        self.output('Using expected SHA1 checksum %s' % expected)
+        expected = self.env['expected_sha256sum']
+        self.output('Using expected SHA256 checksum %s' % expected)
 
-        sha1sum_from_pkg = self.sha1sum_from_pkg(pkgpath)
-        self.output('SHA1 for %s: %s' % (pkgpath, sha1sum_from_pkg))
-        if sha1sum_from_pkg == expected:
-            self.output("SHA1 checksum matches")
+        sha256sum_from_pkg = self.sha256sum_from_pkg(pkgpath)
+        self.output('SHA256 for %s: %s' % (pkgpath, sha256sum_from_pkg))
+        if sha256sum_from_pkg == expected:
+            self.output("SHA256 checksum matches")
         else:
-            raise ProcessorError("SHA1 checksum mismatch")
+            raise ProcessorError("SHA256 checksum mismatch")
    
 
 if __name__ == '__main__':
-    processor = Sha1sumVerifier()
+    processor = Sha256sumVerifier()
     processor.execute_shell()
     

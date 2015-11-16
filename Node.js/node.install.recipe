@@ -14,7 +14,7 @@
         <key>MinimumVersion</key>
         <string>0.4.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.gerardkok.verify.node</string>
+        <string>com.github.gerardkok.pkg.node</string>
         <key>Process</key>
         <array>
             <dict>

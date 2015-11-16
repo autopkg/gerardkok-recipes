@@ -10,6 +10,8 @@
         <dict>
             <key>NAME</key>
             <string>node</string>
+            <key>TYPE</key>
+            <string>Stable</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.0</string>

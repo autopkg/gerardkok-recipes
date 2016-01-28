@@ -31,7 +31,7 @@ def is_working_copy(path):
 
 
 def create_dir(path):
-    shutil.rmtree(path)
+    shutil.rmtree(path, ignore_errors=True)
     os.makedirs(path)
     
     

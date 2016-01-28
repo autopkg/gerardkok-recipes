@@ -89,12 +89,12 @@ class SVNUpdater(Processor):
         return match.group(match.lastindex or 0)
     
     
-    def update_working_copy(self):
-        run_svn_cmd(['update'])
+    def update_working_copy(self, working_copy_dir):
+        run_svn_cmd(['update'], working_copy_dir)
         
         
-    def checkout_working_copy(self):    
-        run_svn_cmd(['checkout'])
+    def checkout_working_copy(self, working_copy_dir):    
+        run_svn_cmd(['checkout'], working_copy_dir)
 
 
     def main(self):
@@ -104,13 +104,13 @@ class SVNUpdater(Processor):
             latest_rev = self.get_latest_rev()
             current_rev = self.get_current_rev()
             if latest_rev > current_rev:
-                self.update_working_copy()
+                self.update_working_copy(working_copy_dir)
                 self.env['updated'] = True
             else:
                 self.env['updated'] = False
         else:
             create_dir(working_copy_dir)
-            self.checkout_working_copy()
+            self.checkout_working_copy(working_copy_dir)
             self.env['updated'] = True
  
                 

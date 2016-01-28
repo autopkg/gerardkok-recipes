@@ -35,28 +35,22 @@ def create_dir(path):
     os.makedirs(path)
     
     
-def run_svn_cmd(params, working_copy_dir):
-    svn_cmd = ['/usr/bin/svn', '--non-interactive']
-    svn_cmd.extend(params)
-    p = subprocess.Popen(svn_cmd,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        cwd=working_copy_dir)
-    return p.communicate()
-    
-
 class SVNUpdater(Processor):
     """Keeps an svn working copy up to date."""
     description = __doc__
     input_variables = {
         "source": {
             "required": True,
-            "description": "svn repository url",
+            "description": "svn repository url"
         },
         "working_copy_dir": {
             "required": False,
-            "description": "path to working copy",
+            "description": "path to working copy"
         },
+        "trust_server_cert": {
+            "required": False,
+            "description": "whether to trust the server certificate"
+        }
     }
     output_variables = {
         "updated": {
@@ -66,8 +60,21 @@ class SVNUpdater(Processor):
             "description": "the revision the working copy is updated to"
         }
     }
+
     
     REVISION_RE = re.compile('^Revision:\s+(\d+)')
+
+    
+    def run_svn_cmd(self, params, working_copy_dir):
+        svn_cmd = ['/usr/bin/svn', '--non-interactive']
+        if trust_server_cert():
+            svn_cmd.extend(['--trust-server-cert'])
+        svn_cmd.extend(params)
+        p = subprocess.Popen(svn_cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            cwd=working_copy_dir)
+        return p.communicate()
     
     
     def get_working_copy_dir(self):
@@ -75,6 +82,13 @@ class SVNUpdater(Processor):
             return self.env['working_copy_dir']
         else:
             return os.path.join(self.env.get('RECIPE_CACHE_DIR'), 'downloads')
+        
+        
+    def trust_server_cert(self):
+        if 'trust_server_cert' in self.env:
+            return self.env['trust_server_cert']
+        else:
+            return True
         
         
     def get_latest_rev(self):

@@ -67,7 +67,7 @@ class SVNUpdater(Processor):
     
     def run_svn_cmd(self, params, working_copy_dir):
         svn_cmd = ['/usr/bin/svn', '--non-interactive']
-        if trust_server_cert():
+        if self.trust_server_cert():
             svn_cmd.extend(['--trust-server-cert'])
         svn_cmd.extend(params)
         p = subprocess.Popen(svn_cmd,

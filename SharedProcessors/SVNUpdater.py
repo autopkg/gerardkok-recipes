@@ -25,6 +25,26 @@ from autopkglib import Processor, ProcessorError
 
 __all__ = ["SVNUpdater"]
 
+
+def is_working_copy(path):
+    return os.path.isdir(path) and os.path.isdir(os.path.join(path, '.svn'))
+
+
+def create_dir(path):
+    shutil.rmtree(path)
+    os.makedirs(path)
+    
+    
+def run_svn_cmd(params, working_copy_dir):
+    svn_cmd = ['/usr/bin/svn', '--non-interactive']
+    svn_cmd.extend(params)
+    p = subprocess.Popen(svn_cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        cwd=working_copy_dir)
+    return p.communicate()
+    
+
 class SVNUpdater(Processor):
     """Keeps an svn working copy up to date."""
     description = __doc__
@@ -57,25 +77,6 @@ class SVNUpdater(Processor):
             return os.path.join(self.env.get('RECIPE_CACHE_DIR'), 'downloads')
         
         
-    def is_working_copy(path):
-        return os.path.isdir(path) and os.path.isdir(os.path.join(path, '.svn'))
-    
-    
-    def create_dir(path):
-        shutil.rmtree(path)
-        os.makedirs(path)
-        
-        
-    def run_svn_cmd(params, working_copy_dir):
-        svn_cmd = ['/usr/bin/svn', '--non-interactive']
-        svn_cmd.extend(params)
-        p = subprocess.Popen(svn_cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            cwd=working_copy_dir)
-        return p.communicate()
-    
-    
     def get_latest_rev(self):
         (out, err) = run_svn_cmd(['info', '-r', 'HEAD'])
         match = REVISION_RE.search(out)

@@ -92,23 +92,23 @@ class SVNUpdater(Processor):
         
         
     def get_latest_rev(self):
-        (out, err) = run_svn_cmd(['info', '-r', 'HEAD'])
+        (out, err) = self.run_svn_cmd(['info', '-r', 'HEAD'])
         match = REVISION_RE.search(out)
         return match.group(match.lastindex or 0)
     
     
     def get_current_ref(self):
-        (out, err) = run_svn_cmd(['info'])
+        (out, err) = self.run_svn_cmd(['info'])
         match = REVISION_RE.search(out)
         return match.group(match.lastindex or 0)
     
     
     def update_working_copy(self, working_copy_dir):
-        run_svn_cmd(['update'], working_copy_dir)
+        self.run_svn_cmd(['update'], working_copy_dir)
         
         
     def checkout_working_copy(self, working_copy_dir):    
-        run_svn_cmd(['checkout'], working_copy_dir)
+        self.run_svn_cmd(['checkout'], working_copy_dir)
 
 
     def main(self):

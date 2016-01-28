@@ -64,42 +64,36 @@ class SVNUpdater(Processor):
     def create_dir(path):
         shutil.rmtree(path)
         os.makedirs(path)
+        
+        
+    def run_svn_cmd(params, working_copy_dir):
+        svn_cmd = ['/usr/bin/svn', '--non-interactive']
+        svn_cmd.extend(params)
+        p = subprocess.Popen(svn_cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            cwd=working_copy_dir)
+        return p.communicate()
     
     
     def get_latest_rev(self):
-        svn_cmd = ['/usr/bin/svn', 'info', '-r', 'HEAD']
-        p = subprocess.Popen(svn_cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
-        (out, err) = p.communicate()
+        (out, err) = run_svn_cmd(['info', '-r', 'HEAD'])
         match = REVISION_RE.search(out)
         return match.group(match.lastindex or 0)
     
     
     def get_current_ref(self):
-        svn_cmd = ['/usr/bin/svn', 'info']
-        p = subprocess.Popen(svn_cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
-        (out, err) = p.communicate()
+        (out, err) = run_svn_cmd(['info'])
         match = REVISION_RE.search(out)
         return match.group(match.lastindex or 0)
     
     
     def update_working_copy(self):
-        svn_cmd = ['/usr/bin/svn', 'update']
-        p = subprocess.Popen(svn_cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
-        (out, err) = p.communicate()
+        run_svn_cmd(['update'])
         
         
     def checkout_working_copy(self):    
-        svn_cmd = ['/usr/bin/svn', 'checkout']
-        p = subprocess.Popen(svn_cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
-        (out, err) = p.communicate()
+        run_svn_cmd(['checkout'])
 
 
     def main(self):

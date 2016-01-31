@@ -23,6 +23,7 @@ import re
 
 from autopkglib import Processor, ProcessorError
 
+
 __all__ = ["SVNUpdater"]
 
 
@@ -30,9 +31,12 @@ def is_working_copy(path):
     return os.path.isdir(path) and os.path.isdir(os.path.join(path, '.svn'))
 
 
-def create_dir(path):
-    shutil.rmtree(path, ignore_errors=True)
-    os.makedirs(path)
+def get_rev(str):
+    result = re.search(r'^Revision:\s+(\d+)', str, re.MULTILINE)
+    if result:
+        return result.group(1)
+    else:
+        return 0
     
     
 class SVNUpdater(Processor):
@@ -53,19 +57,19 @@ class SVNUpdater(Processor):
         }
     }
     output_variables = {
-        "updated": {
-            "description": "if the working copy has been updated"
+        "download_changed": {
+            "description": "whether the working copy has been updated"
         },
         "revision": {
             "description": "the revision the working copy is updated to"
+        },
+        "svn_updater_summary_result": {
+            "description": "interesting results"
         }
     }
 
     
-    REVISION_RE = re.compile('^Revision:\s+(\d+)')
-
-    
-    def run_svn_cmd(self, params, working_copy_dir):
+    def run_svn_cmd(self, params, working_copy_dir=None):
         svn_cmd = ['/usr/bin/svn', '--non-interactive']
         if self.trust_server_cert():
             svn_cmd.extend(['--trust-server-cert'])
@@ -77,12 +81,12 @@ class SVNUpdater(Processor):
         return p.communicate()
     
     
-    def get_working_copy_dir(self):
+    def get_working_copy_dir(self, source):
         if 'working_copy_dir' in self.env:
             return self.env['working_copy_dir']
         else:
-            return os.path.join(self.env.get('RECIPE_CACHE_DIR'), 'downloads')
-        
+            return os.path.join(self.env.get('RECIPE_CACHE_DIR'), 'downloads', os.path.basename(source))
+       
         
     def trust_server_cert(self):
         if 'trust_server_cert' in self.env:
@@ -91,41 +95,36 @@ class SVNUpdater(Processor):
             return True
         
         
-    def get_latest_rev(self):
-        (out, err) = self.run_svn_cmd(['info', '-r', 'HEAD'])
-        match = REVISION_RE.search(out)
-        return match.group(match.lastindex or 0)
-    
-    
-    def get_current_ref(self):
-        (out, err) = self.run_svn_cmd(['info'])
-        match = REVISION_RE.search(out)
-        return match.group(match.lastindex or 0)
-    
-    
-    def update_working_copy(self, working_copy_dir):
-        self.run_svn_cmd(['update'], working_copy_dir)
+    def get_latest_rev(self, source):
+        (out, err) = self.run_svn_cmd(['info', '-r', 'HEAD', source])
+        return get_rev(out)
         
         
-    def checkout_working_copy(self, working_copy_dir):    
-        self.run_svn_cmd(['checkout'], working_copy_dir)
-
-
+    def get_current_rev(self, working_copy_dir):
+        (out, err) = self.run_svn_cmd(['info', working_copy_dir])
+        return get_rev(out)
+        
+        
     def main(self):
         source = self.env['source']
-        working_copy_dir = self.get_working_copy_dir()
+        working_copy_dir = self.get_working_copy_dir(source)
+        self.env['revision'] = self.get_latest_rev(source)
         if is_working_copy(working_copy_dir):
-            latest_rev = self.get_latest_rev()
-            current_rev = self.get_current_rev()
-            if latest_rev > current_rev:
-                self.update_working_copy(working_copy_dir)
-                self.env['updated'] = True
-            else:
-                self.env['updated'] = False
+            current_rev = self.get_current_rev(working_copy_dir)
+            self.run_svn_cmd(['update'], working_copy_dir)
+            self.env['download_changed'] = self.env['revision'] > current_rev
         else:
-            create_dir(working_copy_dir)
-            self.checkout_working_copy(working_copy_dir)
-            self.env['updated'] = True
+            # is working_copy_dir is not a working copy, make sure it's out of the way
+            shutil.rmtree(working_copy_dir, ignore_errors=True)
+            self.run_svn_cmd(['checkout', source, working_copy_dir])
+            self.env['download_changed'] = True
+        if self.env['download_changed']:
+            self.env['svn_updater_summary_result'] = {
+                'summary_text': 'The following working copy was updated:',
+                'data': {
+                    'working_copy_path': working_copy_dir,
+                }
+            }
  
                 
 if __name__ == '__main__':

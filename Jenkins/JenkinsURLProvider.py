@@ -40,7 +40,7 @@ def get_version(str):
 
 
 class JenkinsURLProvider(Processor):
-    description = "Returns url to the latest Node.js package."
+    description = "Returns url to the latest Jenkins package."
     input_variables = {
         "base_url": {
             "required": False,

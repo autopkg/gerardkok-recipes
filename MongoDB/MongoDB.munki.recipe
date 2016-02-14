@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Imports the latest release of MongoDB into Munki.</string>
+        <key>Identifier</key>
+        <string>com.github.gerardkok.munki.MongoDB</string>
+        <key>Input</key>
+        <dict>
+            <key>MUNKI_REPO_SUBDIR</key>
+            <string>apps/MongoDB</string>
+            <key>MUNKI_CATEGORY</key>
+            <string>Developer</string>
+            <key>NAME</key>
+            <string>MongoDB</string>
+            <key>pkginfo</key>
+            <dict>
+                <key>catalogs</key>
+                <array>
+                    <string>testing</string>
+                </array>
+                <key>blocking_applications</key>
+                <array>
+                    <string>mongod</string>
+                </array>
+                <key>category</key>
+                <string>%MUNKI_CATEGORY%</string>
+                <key>description</key>
+                <string>MongoDB is an open-source, document database designed for ease of development and scaling.</string>
+                <key>developer</key>
+                <string>MongoDB, Inc.</string>
+                <key>display_name</key>
+                <string>MongoDB</string>
+                <key>name</key>
+                <string>%NAME%</string>
+                <key>unattended_install</key>
+                <true/>
+            </dict>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.3.1</string>
+        <key>ParentRecipe</key>
+        <string>com.github.gerardkok.pkg.MongoDB</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>pkg_path</key>
+                    <string>%pkg_path%</string>
+                    <key>repo_subdirectory</key>
+                    <string>%MUNKI_REPO_SUBDIR%</string>
+                </dict>
+                <key>Processor</key>
+                <string>MunkiImporter</string>
+            </dict>
+        </array>
+    </dict>
+</plist>

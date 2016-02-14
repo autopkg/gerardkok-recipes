@@ -28,7 +28,7 @@ def get_location(str):
     if result:
         return result.group(1)
     else:
-        return 0
+        return None
     
     
 def get_version(str):
@@ -36,7 +36,7 @@ def get_version(str):
     if result:
         return result.group(1)
     else:
-        return 0
+        return None
 
 
 class JenkinsURLProvider(Processor):

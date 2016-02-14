@@ -11,7 +11,7 @@
             <key>NAME</key>
             <string>MongoDB</string>
             <key>PKG_ID</key>
-            <string>com.github.gerardkok.pkg.mongodb</string>
+            <string>com.mongodb.mongodb</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.3.1</string>

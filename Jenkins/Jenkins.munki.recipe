@@ -23,9 +23,7 @@
                     <string>testing</string>
                 </array>
                 <key>blocking_applications</key>
-                <array>
-                    <string>jenkins.war</string>
-                </array>
+                <array/>
                 <key>category</key>
                 <string>%MUNKI_CATEGORY%</string>
                 <key>description</key>
@@ -37,7 +35,7 @@
                 <key>name</key>
                 <string>%NAME%</string>
                 <key>unattended_install</key>
-                <true/>
+                <false/>
                 <key>requires</key>
                 <array>
                     <string>%JAVA_NAME%</string>
@@ -56,6 +54,11 @@
                         <string>choice10</string>
                     </dict>
                 </array>
+                <key>preinstall_script</key>
+                <string>#!/bin/sh
+
+/bin/launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist               
+</string>
             </dict>
         </dict>
         <key>MinimumVersion</key>

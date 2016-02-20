@@ -11,7 +11,7 @@
             <key>MUNKI_REPO_SUBDIR</key>
             <string>apps/MongoDB</string>
             <key>MUNKI_CATEGORY</key>
-            <string>Developer</string>
+            <string>Development</string>
             <key>NAME</key>
             <string>MongoDB</string>
             <key>pkginfo</key>

@@ -54,7 +54,7 @@ class GPGSignatureVerifier(Processor):
 
     
     def main(self):
-        gpg_import_cmd = [self.env['gpg_path'], '--import', self.env['public_key_id']]
+        gpg_import_cmd = [self.env['gpg_path'], '--recv-keys', self.env['public_key_id']]
         gpg_verify_cmd = [self.env['gpg_path'],
                     '--status-fd', '1', '--verify',
                     self.env['signature_file'],

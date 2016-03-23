@@ -47,7 +47,7 @@
         <key>MinimumVersion</key>
         <string>0.2.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.gerardkok.download.GPGSuite</string>
+        <string>com.github.gerardkok.verify.GPGSuite</string>
         <key>Process</key>
         <array>
             <dict>

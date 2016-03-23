@@ -56,7 +56,7 @@ class GPGSignatureVerifier(Processor):
     def gpg_found(self):
         gpg_version_cmd = [self.env['gpg_path'], '--version']
         try:
-            subprocess.call(gpg_version_cmd)
+            subprocess.call(gpg_version_cmd, stdout=devnull, stderr=devnull)
         except OSError as e:
             if e.errno == os.errno.ENOENT:
                 return False
@@ -68,7 +68,7 @@ class GPGSignatureVerifier(Processor):
     def import_key(self):
         gpg_import_cmd = [self.env['gpg_path'], '--recv-keys', self.env['public_key_id']]
         try:
-            subprocess.call(gpg_import_cmd)
+            subprocess.call(gpg_import_cmd, stdout=devnull, stderr=devnull)
         except OSError as e:
             raise ProcessorError("Importing public key failed")
         

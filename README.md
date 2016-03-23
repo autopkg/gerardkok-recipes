@@ -22,8 +22,8 @@ Run `autopkg make-override Python-package.munki.recipe -n MyPythonPackage.munki`
 ### GPGSignatureVerifier
 
 This processor verifies signatures of gpg-signed files against a gpg key. If gpg cannot be found at %gpg_path% (defaults to `/usr/local/bin/gpg`), this processor will silently succeed.
-If will also succeed if the gpg executable can be found, the public key belonging to %public_key_id% can be imported, and and gpg is able to verify
-that the signature in %signature_file% matches that of %distribution_file%. If will throw a ProcessorError otherwise.
+If will also succeed if the gpg executable can be found, the public key belonging to %public_key_id% can be imported, and gpg is able to verify
+that the signature in %signature_file% matches that of %distribution_file%. It will throw a ProcessorError otherwise.
 
 ##### Example usage
 

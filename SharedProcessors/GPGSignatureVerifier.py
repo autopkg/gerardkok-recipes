@@ -27,6 +27,15 @@ from autopkglib import Processor, ProcessorError
 __all__ = ["GPGSignatureVerifier"]
 
 
+def check_for_goodsig(string, key_id):
+    match = re.search("^\\[GNUPG:\\] GOODSIG ([0-9A-F]{8,})", string, re.M)
+    if match:
+        found_key_id = match.group(1)[-8:]
+        return key_id == found_key_id
+    else:
+        return False   
+
+
 class GPGSignatureVerifier(Processor):
     """Verifies a gpg signature. Succeeds if gpg is not installed, or if the signature is good. Fails otherwise."""
     description = __doc__
@@ -82,7 +91,7 @@ class GPGSignatureVerifier(Processor):
             (output, error) = proc.communicate()
             if proc.returncode:
                 raise ProcessorError("Verifying signature failed")
-            return (output.find('GOODSIG') >= 0)
+            return check_for_goodsig(output, self.env['public_key_id'])
         except:
             raise ProcessorError("Verifying signature failed")
 

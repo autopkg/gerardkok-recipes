@@ -28,7 +28,7 @@ __all__ = ["GPGSignatureVerifier"]
 
 
 class GPGSignatureVerifier(Processor):
-    """Verifies a gpg signature."""
+    """Verifies a gpg signature. Succeeds if gpg is not installed, or if the signature is good. Fails otherwise."""
     description = __doc__
     input_variables = {
         "gpg_path": {
@@ -37,7 +37,7 @@ class GPGSignatureVerifier(Processor):
             "description": "location of the gpg binary"
         },
         "public_key_id": {
-            "required": False,
+            "required": True,
             "description": "public key id to import"
         },
         "distribution_file": {
@@ -51,33 +51,51 @@ class GPGSignatureVerifier(Processor):
     }
     output_variables = {
     }
-
     
-    def main(self):
+
+    def gpg_found(self):
+        gpg_version_cmd = [self.env['gpg_path'], '--version']
+        try:
+            subprocess.call(gpg_version_cmd)
+        except OSError as e:
+            if e.errno == os.errno.ENOENT:
+                return False
+            else:
+                raise ProcessorError("Finding gpg executable failed")
+        return True
+    
+    
+    def import_key(self):
         gpg_import_cmd = [self.env['gpg_path'], '--recv-keys', self.env['public_key_id']]
-        gpg_verify_cmd = [self.env['gpg_path'],
-                    '--status-fd', '1', '--verify',
-                    self.env['signature_file'],
-                    self.env['distribution_file']]
         try:
             subprocess.call(gpg_import_cmd)
         except OSError as e:
-            if e.errno == os.errno.ENOENT:
-                self.output("No gpg executable found, exiting without checking integrity")
-                exit(0)
-            else:
-                raise ProcessorError("Importing public key failed")
+            raise ProcessorError("Importing public key failed")
+        
+        
+    def verify(self):
+        gpg_verify_cmd = [self.env['gpg_path'], '--status-fd', '1', '--verify', self.env['signature_file'], self.env['distribution_file']]
         try:
-            proc = subprocess.Popen(gpg_verify_cmd,
-                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            proc = subprocess.Popen(gpg_verify_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             (output, error) = proc.communicate()
-            if (output.find('GOODSIG') < 0):
+            if proc.returncode:
                 raise ProcessorError("Verifying signature failed")
+            return (output.find('GOODSIG') >= 0)
         except:
             raise ProcessorError("Verifying signature failed")
-            
- 
-                
+
+    
+    def main(self):
+        if self.gpg_found():
+            self.import_key()
+            if self.verify():
+                self.output("Good signature for %s" % self.env['distribution_file'])
+            else:
+                raise ProcessorError("Bad signature")
+        else:
+            self.output("gpg executable not found, therefore assuming signature for %s is good" % self.env['distribution_file'])
+
+
 if __name__ == '__main__':
     processor = GPGSignatureVerifier()
     processor.execute_shell()

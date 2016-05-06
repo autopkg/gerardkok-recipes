@@ -21,9 +21,9 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>https://www.mongodb.org/downloads</string>
+                    <string>https://www.mongodb.com/downloads</string>
                     <key>re_pattern</key>
-                    <string>&lt;h2&gt;Current Stable Release \(([0-9\.]+)\)&lt;/h2&gt;</string>
+                    <string>&gt;Current Stable Release \(([0-9\.]+)\)&lt;</string>
                     <key>result_output_var_name</key>
                     <string>version</string>
                 </dict>

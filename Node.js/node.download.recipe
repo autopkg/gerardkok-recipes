@@ -14,7 +14,7 @@
             <string>Stable</string>
         </dict>
         <key>MinimumVersion</key>
-        <string>0.4.0</string>
+        <string>0.6.0</string>
         <key>Process</key>
         <array>
             <dict>
@@ -48,6 +48,21 @@
                     <string>%url%/node-v%version%.pkg</string>
                     <key>filename</key>
                     <string>%NAME%.pkg</string>
+                </dict>
+            </dict>
+            <dict>   
+                <key>Processor</key>   
+                <string>CodeSignatureVerifier</string>   
+                <key>Arguments</key>   
+                <dict>   
+                    <key>input_path</key>   
+                    <string>%pathname%</string>
+                    <key>expected_authority_names</key>
+                    <array>
+                        <string>Developer ID Installer: Node.js Foundation (HX7739G8FX)</string>
+                        <string>Developer ID Certification Authority</string>
+                        <string>Apple Root CA</string>
+                    </array>
                 </dict>
             </dict>
             <dict>

@@ -21,7 +21,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>http://rogueamoeba.com/airfoil/mac/download.php</string>
+                    <string>https://rogueamoeba.com/airfoil/mac/download.php</string>
                     <key>filename</key>
                     <string>%NAME%.zip</string>
                     <key>request_headers</key>

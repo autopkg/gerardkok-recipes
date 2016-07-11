@@ -16,7 +16,7 @@
         <key>MinimumVersion</key>
         <string>0.3.1</string>
         <key>ParentRecipe</key>
-        <string>com.github.gerardkok.download.MongoDB</string>
+        <string>com.github.gerardkok.verify.MongoDB</string>
         <key>Process</key>
         <array>
             <dict>

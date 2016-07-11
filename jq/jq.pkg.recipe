@@ -16,18 +16,9 @@
         <key>MinimumVersion</key>
         <string>0.2.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.gerardkok.download.jq</string>
+        <string>com.github.gerardkok.verify.jq</string>
         <key>Process</key>
         <array>
-            <dict>
-                <key>Processor</key>
-                <string>com.github.autopkg.gerardkok-recipes.SharedProcessors/VersionFixer</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>version</key>
-                    <string>%version%</string>
-                </dict>
-            </dict>
             <dict>
                 <key>Processor</key>
                 <string>PkgRootCreator</string>

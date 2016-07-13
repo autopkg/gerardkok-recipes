@@ -54,6 +54,9 @@ class GPGSignatureVerifier(Processor):
         }
     }
     output_variables = {
+        "pathname": {
+            "description": "path to the distribution file."
+        }
     }
     
 
@@ -92,6 +95,7 @@ class GPGSignatureVerifier(Processor):
 
     
     def main(self):
+        self.env['pathname'] = self.env['distribution_file']
         if self.gpg_found():
             self.import_key()
             if self.verify():

@@ -10,8 +10,8 @@
         <dict>
             <key>NAME</key>
             <string>node</string>
-            <key>TYPE</key>
-            <string>Stable</string>
+            <key>RELEASE</key>
+            <string>latest-boron</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.6.0</string>
@@ -22,8 +22,8 @@
                 <string>NodeLatestURLProvider</string>
                 <key>Arguments</key>
                 <dict>
-                    <key>type</key>
-                    <string>%TYPE%</string>
+                    <key>release</key>
+                    <string>%RELEASE%</string>
                 </dict>
             </dict>
             <dict>
@@ -46,8 +46,6 @@
                 <dict>
                     <key>url</key>
                     <string>%url%/node-v%version%.pkg</string>
-                    <key>filename</key>
-                    <string>%NAME%.pkg</string>
                 </dict>
             </dict>
             <dict>   

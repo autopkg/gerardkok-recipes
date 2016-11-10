@@ -14,41 +14,40 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-from autopkglib import Processor, ProcessorError
-import subprocess
-import os
+from autopkglib import Processor
 
 
 __all__ = ["NodeLatestURLProvider"]
 
 
+NODEJS_BASE_URL = "https://nodejs.org/dist/{release}"
+
+
 class NodeLatestURLProvider(Processor):
     description = "Returns url to the latest Node.js package."
     input_variables = {
-        "type": {
+        "release": {
             "required": False,
-            "description": "type of download; either 'LTS' or 'Stable', default: 'Stable'.",
-        }
+            "default": 'latest',
+            "description": (
+                "Which release to download. Examples: 'latest', "
+                "'latest-argon', 'latest-boron', 'latest-v4.x', 'latest-v6.x'."
+                "Defaults to 'latest'"),
+        },
     }
     output_variables = {
         "url": {
             "description": "download URL.",
         }
     }
-    
+
     __doc__ = description
-    
-    
+
+
     def main(self):
-        if self.env["type"] == 'LTS':
-            url = 'https://nodejs.org/dist/latest-v4.x'
-        else:
-            url = 'https://nodejs.org/dist/latest'
-        self.env["url"] = url      
-   
+        release = self.env.get('release', 'latest')
+        self.env['url'] = NODEJS_BASE_URL.format(release=release)
 
 if __name__ == '__main__':
     processor = NodeLatestURLProvider()
     processor.execute_shell()
-    

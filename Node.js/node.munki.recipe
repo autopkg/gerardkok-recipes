@@ -64,8 +64,6 @@
             <dict>
                 <key>Arguments</key>
                 <dict>
-                    <key>pkg_path</key>
-                    <string>%RECIPE_CACHE_DIR%/downloads/%NAME%.pkg</string>
                     <key>repo_subdirectory</key>
                     <string>%MUNKI_REPO_SUBDIR%</string>
                 </dict>

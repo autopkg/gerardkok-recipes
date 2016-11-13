@@ -55,7 +55,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>predicate</key>
-                    <string>!download_changed</string>
+                    <string>download_changed == False</string>
                 </dict>
             </dict>
             <dict>

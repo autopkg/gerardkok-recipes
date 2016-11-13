@@ -58,6 +58,11 @@
                     <dict>
                         <key>version</key>
                         <string>%version%</string>
+                        <key>installcheck_script</key>
+                        <string>#!/bin/sh
+                    
+[ ! -x /usr/local/bin/node ] || [ "$(/usr/local/bin/node --version)" != "v%version%" ]
+</string>
                     </dict>
                 </dict>
             </dict>
@@ -68,6 +73,8 @@
                     <string>%pathname%</string>
                     <key>repo_subdirectory</key>
                     <string>%MUNKI_REPO_SUBDIR%</string>
+                    <key>force_munkiimport</key>
+                    <string>True</string>
                 </dict>
                 <key>Processor</key>
                 <string>MunkiImporter</string>

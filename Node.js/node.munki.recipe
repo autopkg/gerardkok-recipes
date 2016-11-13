@@ -51,6 +51,15 @@
         <array>
             <dict>
                 <key>Processor</key>
+                <string>StopProcessingIf</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>predicate</key>
+                    <string>!download_changed</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
                 <string>MunkiPkginfoMerger</string>
                 <key>Arguments</key>
                 <dict>

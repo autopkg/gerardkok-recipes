@@ -26,6 +26,10 @@
                     <string>class=\"tab-detail tab-detail-current-sdk\".*?&lt;a\s+href=\"(https://go.microsoft.com/fwlink/\?LinkID=[0-9]*)\"&gt;x64&lt;/a&gt;\s+\.pkg&lt;/td&gt;</string>
                     <key>result_output_var_name</key>
                     <string>base_url</string>
+                    <key>re_flags</key>
+					<array>
+						<string>DOTALL</string>
+					</array>
                 </dict>
             </dict>
             <dict>

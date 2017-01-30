@@ -32,7 +32,7 @@ def get_location(str):
     
     
 def get_version(str):
-    result = re.search(r'^https://download.microsoft.com/download/[A-Z0-9\-\/]+/dotnet-[a-z\-]*osx-x64\.([0-9a-z\-\.]+)\.pkg', str)
+    result = re.search(r'^https://download.microsoft.com/download/[A-Za-z0-9\-\/]+/dotnet-[a-z\-]*osx-x64\.([0-9a-z\-\.]+)\.pkg', str)
     if result:
         return result.group(1)
     else:

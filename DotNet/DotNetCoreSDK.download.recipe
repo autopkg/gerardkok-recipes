@@ -21,9 +21,9 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>https://www.microsoft.com/net/download/core#/current</string>
+                    <string>https://www.microsoft.com/net/download/core</string>
                     <key>re_pattern</key>
-                    <string>&lt;a\s+href=\"(https://go.microsoft.com/fwlink/\?LinkID=[0-9]*)\"&gt;x64&lt;/a&gt;\s+\.pkg&lt;/td&gt;</string>
+                    <string>class=\"tab-detail tab-detail-current-sdk\".*?&lt;a\s+href=\"(https://go.microsoft.com/fwlink/\?LinkID=[0-9]*)\"&gt;x64&lt;/a&gt;\s+\.pkg&lt;/td&gt;</string>
                     <key>result_output_var_name</key>
                     <string>base_url</string>
                 </dict>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Download recipe for ClickShare Launcher.</string>
+        <key>Identifier</key>
+        <string>com.github.gerardkok.download.ClickShareLauncher</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>ClickShareLauncher</string>
+            <key>URL</key>
+            <string>https://www.barco.com/en/Support/clickshare%20cs-100/drivers</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.3.1</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Processor</key>
+                <string>URLTextSearcher</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>url</key>
+                    <string>%URL%</string>
+                    <key>re_pattern</key>
+                    <string>:&amp;quot;ClickShare Launcher Installer&amp;quot;,&amp;quot;downloadUrl&amp;quot;:&amp;quot;(?P&lt;rel_url&gt;.*?)&amp;quot;,&amp;quot;icon&amp;quot;:&amp;quot;fa-file-zip-o&amp;quot;,&amp;quot;url&amp;quot;:&amp;quot;.*?&amp;quot;,&amp;quot;version&amp;quot;:&amp;quot;v(?P&lt;version&gt;[0-9\.]+)&amp;quot;</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>url</key>
+                    <string>https://www.barco.com%rel_url%</string>
+                    <key>filename</key>
+                    <string>%NAME%.zip</string>
+                </dict>
+                <key>Processor</key>
+                <string>URLDownloader</string>
+            </dict>
+            <!--
+            Barco's site doesn't like the If-None-Match and If-Modified-Since headers,
+            so we'll move the download aside and let the munki recipe figure out if it's a new version.
+            Unfotunately that means that download happens on every run of this recipe.
+            -->
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>source</key>
+                    <string>%pathname%</string>
+                    <key>target</key>
+                    <string>%RECIPE_CACHE_DIR%/downloads/%NAME%-%version%.zip</string>
+                </dict>
+                <key>Processor</key>
+                <string>FileMover</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>EndOfCheckPhase</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>Unarchiver</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>archive_path</key>
+                    <string>%RECIPE_CACHE_DIR%/downloads/%NAME%-%version%.zip</string>
+                    <key>destination_path</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                    <key>purge_destination</key>
+                    <true/>
+                </dict>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>input_path</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/ClickShare*Launcher*.pkg</string>
+                    <key>expected_authority_names</key>
+                    <array>
+                        <string>Developer ID Installer: Barco NV (P6CDJZR997)</string>
+                        <string>Developer ID Certification Authority</string>
+                        <string>Apple Root CA</string>
+                    </array>
+                </dict>
+                <key>Processor</key>
+                <string>CodeSignatureVerifier</string>
+            </dict>
+        </array>
+    </dict>
+</plist>

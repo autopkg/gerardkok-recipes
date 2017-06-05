@@ -43,26 +43,6 @@
             <dict>
                 <key>Arguments</key>
                 <dict>
-                    <key>input_plist_path</key>
-                    <string>%pathname%/Widelands.app/Contents/Info.plist</string>
-                    <key>plist_version_key</key>
-                    <string>CFBundleVersion</string>
-                </dict>
-                <key>Processor</key>
-                <string>Versioner</string>
-            </dict>
-            <dict>
-                <key>Arguments</key>
-                <dict>
-                    <key>version</key>
-                    <string>%version%</string>
-                </dict>
-                <key>Processor</key>
-                <string>com.github.autopkg.gerardkok-recipes.SharedProcessors/VersionFixer</string>
-            </dict>
-            <dict>
-                <key>Arguments</key>
-                <dict>
                     <key>pkgroot</key>
                     <string>%RECIPE_CACHE_DIR%/%NAME%</string>
                     <key>pkgdirs</key>
@@ -92,7 +72,7 @@
                     <key>plist_data</key>
                     <dict>
                         <key>CFBundleShortVersionString</key>
-                        <string>%fixedversion%</string>
+                        <string>%version%</string>
                     </dict>
                 </dict>
                 <key>Processor</key>
@@ -104,7 +84,7 @@
                     <key>dmg_root</key>
                     <string>%RECIPE_CACHE_DIR%/%NAME%</string>
                     <key>dmg_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%-%fixedversion%.dmg</string>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
                 </dict>
                 <key>Processor</key>
                 <string>DmgCreator</string>
@@ -113,7 +93,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>pkg_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%-%fixedversion%.dmg</string>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%-%version%.dmg</string>
                     <key>repo_subdirectory</key>
                     <string>%MUNKI_REPO_SUBDIR%</string>
                 </dict>

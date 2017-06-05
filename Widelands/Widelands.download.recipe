@@ -23,7 +23,7 @@
 					<key>url</key>
 					<string>https://wl.widelands.org/wiki/Download</string>
 					<key>re_pattern</key>
-					<string>(https://launchpad.net/widelands/build[0-9]+/build[0-9]+/\+download/widelands-build[0-9]+-mac64.dmg)</string>
+					<string>(https://launchpad.net/widelands/build[0-9]+/build[0-9]+/\+download/widelands-build(?P&lt;version&gt;[0-9]+)[a-z-]*-mac64.dmg)</string>
 					<key>result_output_var_name</key>
 					<string>url</string>
 				</dict>

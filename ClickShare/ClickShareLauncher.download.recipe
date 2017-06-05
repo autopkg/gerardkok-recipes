@@ -42,7 +42,7 @@
             <!--
             Barco's site doesn't like the If-None-Match and If-Modified-Since headers,
             so we'll move the download aside and let the munki recipe figure out if it's a new version.
-            Unfotunately that means that download happens on every run of this recipe.
+            Unfortunately that means that a download happens on every run of this recipe.
             -->
             <dict>
                 <key>Arguments</key>

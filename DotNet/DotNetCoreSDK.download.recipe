@@ -23,29 +23,12 @@
                     <key>url</key>
                     <string>https://www.microsoft.com/net/download/core</string>
                     <key>re_pattern</key>
-                    <string>class=\"tab-detail tab-detail-current-sdk\".*?&lt;a\s+href=\"(https://go.microsoft.com/fwlink/\?LinkID=[0-9]*)\"&gt;x64&lt;/a&gt;\s+\.pkg&lt;/td&gt;</string>
-                    <key>result_output_var_name</key>
-                    <string>base_url</string>
-                    <key>re_flags</key>
-					<array>
-						<string>DOTALL</string>
-					</array>
-                </dict>
-            </dict>
-            <dict>
-                <key>Processor</key>
-                <string>DotNetCoreSDKURLProvider</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>base_url</key>
-                    <string>%base_url%</string>
+                    <string>href="(?P&lt;url&gt;https://download.microsoft.com/download/[0-9A-F\-/]+/dotnet-dev-osx-x64\.(?P&lt;version&gt;[0-9\.]+)\.pkg)"</string>
                 </dict>
             </dict>
             <dict>
                 <key>Arguments</key>
                 <dict>
-                    <key>url</key>
-                    <string>%url%</string>
                     <key>filename</key>
                     <string>%NAME%.pkg</string>
                 </dict>

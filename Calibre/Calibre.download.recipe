@@ -12,14 +12,23 @@
             <string>Calibre</string>
         </dict>
         <key>MinimumVersion</key>
-        <string>0.3.1</string>
+        <string>0.5.0</string>
         <key>Process</key>
         <array>
             <dict>
+                <key>Processor</key>
+                <string>GitHubReleasesInfoProvider</string>
                 <key>Arguments</key>
                 <dict>
-                    <key>url</key>
-                    <string>http://status.calibre-ebook.com/dist/osx32</string>
+                    <key>asset_regex</key>
+                    <string>calibre-[0-9\.]+\.dmg</string>
+                    <key>github_repo</key>
+                    <string>kovidgoyal/calibre</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
                     <key>filename</key>
                     <string>%NAME%.dmg</string>
                 </dict>

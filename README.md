@@ -6,6 +6,10 @@ Recipes for AutoPkg (https://github.com/autopkg/autopkg).
 
 The recipes for Keka and Scribus are just Munki importers for download recipes by @hansen_m, so you'll have to add his autopkg repo (https://github.com/autopkg/hansen-m-recipes.git) to your autopkg repo list, before the munki recipes for Keka and Scribus will work.
 
+## DotNetCoreSDK recipe
+
+The DotNetCoreSDk munki recipe depends on [@keeleysam](https://github.com/keeleysam)'s [MunkiPkginfoReceiptsEditor](https://github.com/autopkg/keeleysam-recipes/blob/master/GoogleTalkPlugin/MunkiPkginfoReceiptsEditor.py) to set 'com.microsoft.dotnet.sharedhost.component.osx.x64' to optional, because the installer sometimes contains multiple different versions of that package.
+
 ## GPGTools recipe
 
 Work in progress. The recipe does not add an uninstall script to the munki pkgsinfo yet, and no verification that the download is legitimate is being done yet.

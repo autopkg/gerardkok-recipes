@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Downloads the latest version of Devolo Cockpit and packages it for installation.</string>
+        <key>Identifier</key>
+        <string>com.github.gerardkok.pkg.devolo-cockpit</string>
+        <key>Input</key>
+        <dict>
+            <key>BUNDLE_ID</key>
+            <string>de.devolo.dLAN.Cockpit</string>
+            <key>NAME</key>
+            <string>Devolo Cockpit</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.6.1</string>
+        <key>ParentRecipe</key>
+        <string>com.github.gerardkok.download.devolo-cockpit</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Processor</key>
+                <string>PkgRootCreator</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>pkgroot</key>
+                    <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+                    <key>pkgdirs</key>
+                    <dict/>
+                </dict>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>destination_path</key>
+                    <string>%RECIPE_CACHE_DIR%/Scripts/devolo Cockpit Installation.app</string>
+                    <key>overwrite</key>
+                    <true/>
+                    <key>source_path</key>
+                    <string>%pathname%/devolo Cockpit Installation.app</string>
+                </dict>
+                <key>Processor</key>
+                <string>Copier</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>FileCreator</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>file_path</key>
+                    <string>%RECIPE_CACHE_DIR%/Scripts/postinstall</string>
+                    <key>file_mode</key>
+                    <string>0755</string>
+                    <key>file_content</key>
+                    <string>#!/bin/bash
+    
+# Determine working directory
+install_dir=`dirname $0`
+resources_dir="${install_dir}/devolo Cockpit Installation.app/Contents/Resources"
+
+"${resources_dir}/install-script.sh" "${resources_dir}/dlancockpit_osx.tgz"
+"${resources_dir}/finish-script.sh" --silent
+
+exit 0</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>PkgCreator</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>pkg_request</key>
+                    <dict>
+                        <key>pkgroot</key>
+                        <string>%RECIPE_CACHE_DIR%/pkgroot</string>
+                        <key>pkgname</key>
+                        <string>%NAME%-%version%</string>
+                        <key>pkgtype</key>
+                        <string>flat</string>
+                        <key>id</key>
+                        <string>%BUNDLE_ID%</string>
+                        <key>version</key>
+                        <string>%version%</string>
+                        <key>chown</key>
+                        <array/>
+                        <key>scripts</key>
+                        <string>Scripts</string>
+                    </dict>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>PathDeleter</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>path_list</key>
+                    <array>
+                        <string>%RECIPE_CACHE_DIR%/Scripts</string>
+                    </array>
+                </dict>
+            </dict>
+        </array>
+    </dict>
+</plist>

@@ -12,6 +12,8 @@
             <string>support/SplunkForwarder</string>
             <key>MUNKI_CATEGORY</key>
             <string>Support</string>
+            <key>MUNKI_DESCRIPTION</key>
+            <string>Universal Forwarders provide reliable, secure data collection from remote sources and forward that data into Splunk (Enterprise, Light, Cloud or Hunk) for indexing and consolidation. They can scale to tens of thousands of remote systems, collecting terabytes of data with minimal impact on performance.</string>
             <key>NAME</key>
             <string>SplunkForwarder</string>
             <key>pkginfo</key>
@@ -23,7 +25,7 @@
                 <key>category</key>
                 <string>%MUNKI_CATEGORY%</string>
                 <key>description</key>
-                <string>Universal Forwarders provide reliable, secure data collection from remote sources and forward that data into Splunk (Enterprise, Light, Cloud or Hunk) for indexing and consolidation. They can scale to tens of thousands of remote systems, collecting terabytes of data with minimal impact on performance.</string>
+                <string>%MUNKI_DESCRIPTION%</string>
                 <key>developer</key>
                 <string>Splunk Inc.</string>
                 <key>display_name</key>

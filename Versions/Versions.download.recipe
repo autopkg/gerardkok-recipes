@@ -59,7 +59,7 @@
                     <string>%RECIPE_CACHE_DIR%/%NAME%/Versions.app</string>
                     <key>expected_authority_names</key>
                     <array>
-                        <string>Developer ID Application: Black Pixel</string>
+                        <string>Developer ID Application: Black Pixel (432ZXYXDNY)</string>
                         <string>Developer ID Certification Authority</string>
                         <string>Apple Root CA</string>
                     </array>

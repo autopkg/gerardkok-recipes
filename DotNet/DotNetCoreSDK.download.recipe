@@ -23,7 +23,7 @@
                     <key>url</key>
                     <string>https://www.microsoft.com/net/download/core</string>
                     <key>re_pattern</key>
-                    <string>href="(?P&lt;url&gt;https://download.microsoft.com/download/[0-9A-F\-/]+/dotnet-dev-osx-x64\.(?P&lt;version&gt;[0-9\.]+)\.pkg)"</string>
+                    <string>href="(?P&lt;url&gt;https://download.microsoft.com/download/[0-9A-F\-/]+/dotnet-sdk-(?P&lt;version&gt;[0-9\.]+)-osx-x64\.pkg)"</string>
                 </dict>
             </dict>
             <dict>

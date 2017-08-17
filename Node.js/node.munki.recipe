@@ -46,35 +46,9 @@
         <key>MinimumVersion</key>
         <string>0.6.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.gerardkok.download.node</string>
+        <string>com.github.gerardkok.pkg.node</string>
         <key>Process</key>
         <array>
-            <dict>
-                <key>Processor</key>
-                <string>StopProcessingIf</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>predicate</key>
-                    <string>download_changed == False</string>
-                </dict>
-            </dict>
-            <dict>
-                <key>Processor</key>
-                <string>MunkiPkginfoMerger</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>additional_pkginfo</key>
-                    <dict>
-                        <key>version</key>
-                        <string>%version%</string>
-                        <key>installcheck_script</key>
-                        <string>#!/bin/sh
-                    
-[ ! -x /usr/local/bin/node ] || [ "$(/usr/local/bin/node --version)" != "v%version%" ]
-</string>
-                    </dict>
-                </dict>
-            </dict>
             <dict>
                 <key>Arguments</key>
                 <dict>
@@ -82,8 +56,6 @@
                     <string>%pathname%</string>
                     <key>repo_subdirectory</key>
                     <string>%MUNKI_REPO_SUBDIR%</string>
-                    <key>force_munkiimport</key>
-                    <string>True</string>
                 </dict>
                 <key>Processor</key>
                 <string>MunkiImporter</string>

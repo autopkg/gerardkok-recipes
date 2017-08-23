@@ -25,14 +25,20 @@
                 <key>Arguments</key>
                 <dict>
                     <key>pkgroot</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/payload</string>
                     <key>pkgdirs</key>
                     <dict>
-                        <key>payload</key>
+                        <key>usr</key>
                         <string>0755</string>
-                        <key>payload/usr</key>
+                        <key>usr/local</key>
                         <string>0755</string>
-                        <key>payload/usr/local</key>
+                        <key>data</key>
+                        <string>0775</string>
+                        <key>data/db</key>
+                        <string>0775</string>
+                        <key>etc</key>
+                        <string>0755</string>
+                        <key>etc/paths.d</key>
                         <string>0755</string>
                     </dict>
                 </dict>
@@ -45,7 +51,7 @@
                     <key>archive_path</key>
                     <string>%RECIPE_CACHE_DIR%/downloads/%NAME%.tgz</string>
                     <key>destination_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/Source</string>
                     <key>purge_destination</key>
                     <false/>
                 </dict>
@@ -56,9 +62,23 @@
                 <key>Arguments</key>
                 <dict>
                     <key>source</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/mongodb-osx-x86_64-%version%</string>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/Source/mongodb-osx-x86_64-%version%</string>
                     <key>target</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/payload/usr/local/mongodb</string>
+                    <string>%pkgroot%/usr/local/mongodb</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>FileCreator</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>file_path</key>
+                    <string>%pkgroot%/etc/paths.d/mongodb</string>
+                    <key>file_mode</key>
+                    <string>0755</string>
+                    <key>file_content</key>
+                    <string>/usr/local/mongodb/bin
+</string>
                 </dict>
             </dict>
             <dict>
@@ -69,7 +89,7 @@
                     <key>pkg_request</key>
                     <dict>
                         <key>pkgroot</key>
-                        <string>%RECIPE_CACHE_DIR%/%NAME%/payload</string>
+                        <string>%pkgroot%</string>
                         <key>pkgdir</key>
                         <string>%RECIPE_CACHE_DIR%</string>
                         <key>pkgname</key>
@@ -85,6 +105,30 @@
                             <dict>
                                 <key>path</key>
                                 <string>usr/local/mongodb</string>
+                                <key>user</key>
+                                <string>root</string>
+                                <key>group</key>
+                                <string>wheel</string>
+                            </dict>
+                            <dict>
+                                <key>path</key>
+                                <string>data</string>
+                                <key>user</key>
+                                <string>root</string>
+                                <key>group</key>
+                                <string>staff</string>
+                            </dict>
+                            <dict>
+                                <key>path</key>
+                                <string>data/db</string>
+                                <key>user</key>
+                                <string>root</string>
+                                <key>group</key>
+                                <string>staff</string>
+                            </dict>
+                            <dict>
+                                <key>path</key>
+                                <string>etc/paths.d/mongodb</string>
                                 <key>user</key>
                                 <string>root</string>
                                 <key>group</key>

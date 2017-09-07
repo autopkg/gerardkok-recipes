@@ -52,12 +52,12 @@
             </dict>
             <dict>
                 <key>Processor</key>
-                <string>FileMover</string>
+                <string>Copier</string>
                 <key>Arguments</key>
                 <dict>
-                    <key>source</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/Source/dist</string>
-                    <key>target</key>
+                    <key>source_path</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/Source/*</string>
+                    <key>destination_path</key>
                     <string>%pkgroot%/opt/yarn</string>
                 </dict>
             </dict>
@@ -73,19 +73,6 @@
                     <key>file_content</key>
                     <string>/opt/yarn/bin</string>
                 </dict>
-            </dict>
-            <dict>
-                <key>Arguments</key>
-                <dict>
-                    <key>faux_root</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/payload</string>
-                    <key>installs_item_paths</key>
-                    <array>
-                        <string>/opt/yarn/package.json</string>
-                    </array>
-                </dict>
-                <key>Processor</key>
-                <string>MunkiInstallsItemsCreator</string>
             </dict>
             <dict>
                 <key>Processor</key>
@@ -140,18 +127,12 @@
                 <string>PathDeleter</string>
             </dict>
             <dict>
-                <key>Processor</key>
-                <string>MunkiPkginfoMerger</string>
-            </dict>
-            <dict>
                 <key>Arguments</key>
                 <dict>
                     <key>additional_pkginfo</key>
                     <dict>
                         <key>version</key>
                         <string>%version%</string>
-                        <key>receipts</key>
-                        <array/>
                     </dict>
                 </dict>
                 <key>Processor</key>

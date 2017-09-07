@@ -29,7 +29,7 @@
                 <key>category</key>
                 <string>%MUNKI_CATEGORY%</string>
                 <key>description</key>
-                <string>Fact, reliable, and secure dependency management.</string>
+                <string>Fast, reliable, and secure dependency management.</string>
                 <key>developer</key>
                 <string>yarnpkg.com</string>
                 <key>display_name</key>

@@ -8,7 +8,7 @@ The recipes for Keka and Scribus are just Munki importers for download recipes b
 
 ## DotNetCoreSDK recipe
 
-The DotNetCoreSDk munki recipe depends on [@keeleysam](https://github.com/keeleysam)'s [MunkiPkginfoReceiptsEditor](https://github.com/autopkg/keeleysam-recipes/blob/master/GoogleTalkPlugin/MunkiPkginfoReceiptsEditor.py) to set 'com.microsoft.dotnet.sharedhost.component.osx.x64' to optional, because the installer sometimes contains multiple different versions of that package.
+The DotNetCoreSDK munki recipe depends on [@keeleysam](https://github.com/keeleysam)'s [MunkiPkginfoReceiptsEditor](https://github.com/autopkg/keeleysam-recipes/blob/master/GoogleTalkPlugin/MunkiPkginfoReceiptsEditor.py) to set 'com.microsoft.dotnet.sharedhost.component.osx.x64' to optional, because the installer sometimes contains multiple different versions of that package.
 
 ## GPGTools recipe
 

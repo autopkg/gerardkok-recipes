@@ -53,6 +53,17 @@
                 <key>Processor</key>
                 <string>MunkiImporter</string>
             </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>pkg_ids_set_optional_true</key>
+                    <array>
+                        <string>com.mysql.test</string>
+                    </array>
+                </dict>
+                <key>Processor</key>
+                <string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
+            </dict>
         </array>
     </dict>
 </plist>

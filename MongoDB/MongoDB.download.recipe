@@ -10,6 +10,8 @@
         <dict>
             <key>NAME</key>
             <string>MongoDB</string>
+            <key>URL</key>
+            <string>https://www.mongodb.com/download-center#community</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.3.1</string>
@@ -21,18 +23,14 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>https://www.mongodb.com/downloads</string>
+                    <string>%URL%</string>
                     <key>re_pattern</key>
-                    <string>&gt;Current Stable Release \(([0-9\.]+)\)&lt;</string>
-                    <key>result_output_var_name</key>
-                    <string>version</string>
+                    <string>(?P&lt;url&gt;https://fastdl.mongodb.org/osx/mongodb-osx-ssl-x86_64-(?P&lt;version&gt;[0-9\.]+)\.tgz)</string>
                 </dict>
             </dict>
             <dict>
                 <key>Arguments</key>
                 <dict>
-                    <key>url</key>
-                    <string>https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-%version%.tgz</string>
                     <key>filename</key>
                     <string>%NAME%.tgz</string>
                 </dict>

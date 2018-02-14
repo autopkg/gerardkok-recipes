@@ -33,7 +33,7 @@
             <key>developer</key>
             <string>Puppet</string>
             <key>display_name</key>
-            <string>Puppet5</string>
+            <string>Puppet Development Kit</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>

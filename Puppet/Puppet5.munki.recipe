@@ -14,6 +14,8 @@
         <string>Support</string>
         <key>NAME</key>
         <string>Puppet5</string>
+ 		<key>OS_VERSION</key>
+		<string>10.12</string>
         <key>pkginfo</key>
         <dict>
             <key>catalogs</key>
@@ -24,6 +26,10 @@
             <string>%MUNKI_CATEGORY%</string>
             <key>description</key>
             <string>Puppet is a configuration management solution that allows you to define the state of your IT infrastructure, and then automatically enforces the desired state.</string>
+			<key>minimum_os_version</key>
+			<string>%OS_VERSION%.0</string>
+			<key>maximum_os_version</key>
+			<string>%OS_VERSION%.99</string>
             <key>developer</key>
             <string>Puppet</string>
             <key>display_name</key>

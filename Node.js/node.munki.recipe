@@ -15,7 +15,7 @@
             <key>NAME</key>
             <string>node</string>
             <key>RELEASE</key>
-            <string>latest-boron</string>
+            <string>latest-carbon</string>
             <key>DISPLAY_NAME</key>
             <string>Node.js</string>
             <key>pkginfo</key>

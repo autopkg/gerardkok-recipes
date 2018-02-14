@@ -11,7 +11,7 @@
             <key>NAME</key>
             <string>node</string>
             <key>RELEASE</key>
-            <string>latest-boron</string>
+            <string>latest-carbon</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.6.0</string>

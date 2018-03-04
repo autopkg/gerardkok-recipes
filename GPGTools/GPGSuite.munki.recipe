@@ -32,8 +32,10 @@
                 <string>GPGSuite</string>
                 <key>name</key>
                 <string>%NAME%</string>
-                <key>minimum_os_version</key>
-                <string>10.6.0</string>
+			    <key>minimum_os_version</key>
+			    <string>%OS_VERSION%.0</string>
+			    <key>maximum_os_version</key>
+			    <string>%OS_VERSION%.99</string>
                 <key>blocking_applications</key>
                 <array>
                     <string>Mail</string>

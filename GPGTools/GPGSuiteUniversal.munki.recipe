@@ -5,7 +5,7 @@
         <key>Description</key>
         <string>Downloads GPGSuite and imports into Munki. This import won't account for different versions of macOS that require different versions of the GPGMail plugin.</string>
         <key>Identifier</key>
-        <string>com.github.gerardkok.munki.GPGSuite</string>
+        <string>com.github.gerardkok.munki.GPGSuiteUniversal</string>
         <key>Input</key>
         <dict>
             <key>MUNKI_REPO_SUBDIR</key>

@@ -57,8 +57,13 @@
                 <key>preinstall_script</key>
                 <string>#!/bin/sh
 
-/bin/launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist               
-</string>
+/bin/launchctl unload /Library/LaunchDaemons/org.jenkins-ci.plist</string>
+                <key>uninstall_method</key>
+                <string>uninstall_script</string>
+                <key>uninstall_script</key>
+                <string>#!/bin/bash
+				
+'/Library/Application Support/Jenkins/Uninstall.command'</string>
             </dict>
         </dict>
         <key>MinimumVersion</key>

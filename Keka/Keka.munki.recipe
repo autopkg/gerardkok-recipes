@@ -23,7 +23,7 @@
                 <key>category</key>
                 <string>%MUNKI_CATEGORY%</string>
                 <key>description</key>
-                <string>Keka is a free file archiver for Mac OS X.</string>
+                <string>Keka is a free file archiver for macOS.</string>
                 <key>developer</key>
                 <string>aOne</string>
                 <key>display_name</key>

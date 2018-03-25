@@ -15,7 +15,7 @@
             <key>NAME</key>
             <string>Jenkins</string>
             <key>JAVA_NAME</key>
-            <string>OracleJava8</string>
+            <string>OracleJava8JDK</string>
             <key>pkginfo</key>
             <dict>
                 <key>catalogs</key>

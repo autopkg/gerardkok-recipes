@@ -1,0 +1,3 @@
+# Jenkins java dependency
+
+Jenkins depends on either the JRE or JDK, but installing the JDK does update `/usr/bin/java`, whereas installing the JRE does not. Because `/usr/bin/java` is hard-coded in `/Library/Application Support/Jenkins/jenkins-runner.sh`, you either have to use the JDK, or edit `/Library/Application Support/Jenkins/jenkins-runner.sh` to be able to use the JRE (when using the JRE, the full path to java is `/Library/Internet Plugins/JavaAppletPlugin.plugin/Contents/Home/bin/java`). The Jenkins mnuki recipe defaults to depending on the JDK, because that doesn't require editing files afterwards. A munki for Oracle JDK is available from [nmcspadden-recipes](https://github.com/autopkg/nmcspadden-recipes/blob/master/Oracle/OracleJava8JDK.munki.recipe).

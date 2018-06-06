@@ -2,9 +2,9 @@
 
 Recipes for AutoPkg (https://github.com/autopkg/autopkg).
 
-## Keka and Scribus recipes
+## Scribus recipe
 
-The recipes for Keka and Scribus are just Munki importers for download recipes by @hansen_m, so you'll have to add his autopkg repo (https://github.com/autopkg/hansen-m-recipes.git) to your autopkg repo list, before the munki recipes for Keka and Scribus will work.
+The recipe for Scribus is just a Munki importer for a download recipe by @hansen_m, so you'll have to add his autopkg repo (https://github.com/autopkg/hansen-m-recipes.git) to your autopkg repo list, before the Scribus munki recipe will work.
 
 ## DotNetCoreSDK recipe
 

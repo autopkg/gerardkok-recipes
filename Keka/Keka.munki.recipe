@@ -37,14 +37,14 @@
         <key>MinimumVersion</key>
         <string>0.2.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.gerardkok.verify.Keka</string>
+        <string>com.github.gerardkok.pkg.Keka</string>
         <key>Process</key>
         <array>
             <dict>
                 <key>Arguments</key>
                 <dict>
                     <key>pkg_path</key>
-                    <string>%pathname%</string>
+                    <string>%pkg_path%</string>
                     <key>repo_subdirectory</key>
                     <string>%MUNKI_REPO_SUBDIR%</string>
                 </dict>

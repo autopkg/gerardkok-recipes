@@ -23,9 +23,7 @@
                     <key>url</key>
                     <string>https://www.postbox-inc.com/download/success-mac</string>
                     <key>re_pattern</key>
-                    <string>\"(https://s3\.amazonaws\.com/download\.getpostbox\.com/installers/.*\.dmg)\"</string>
-                    <key>result_output_var_name</key>
-                    <string>download_url</string>
+                    <string>\"(?P&lt;download_url&gt;https://.*\.dmg)\"</string>
                 </dict>
             </dict>
             <dict>

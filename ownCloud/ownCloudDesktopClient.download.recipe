@@ -23,7 +23,7 @@
                     <key>url</key>
                     <string>https://owncloud.org/install/</string>
                     <key>re_pattern</key>
-                    <string>href=\"(https://download.owncloud.com/desktop/stable/ownCloud-[0-9\.]+.pkg)\"</string>
+                    <string>href=\"(https://download.owncloud.com/desktop/stable/ownCloud-[a-z0-9\-\.]+.pkg)\"</string>
                     <key>result_output_var_name</key>
                     <string>download_url</string>
                 </dict>

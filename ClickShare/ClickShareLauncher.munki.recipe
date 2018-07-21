@@ -53,101 +53,14 @@
         <key>MinimumVersion</key>
         <string>0.2.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.gerardkok.download.ClickShareLauncher</string>
+        <string>com.github.gerardkok.pkg.ClickShareLauncher</string>
         <key>Process</key>
         <array>
-            <!--
-            Turn the download into a dmg, that way we can use globbing with the FlatPkgUnpacker
-            -->
-            <dict>
-                <key>Arguments</key>
-                <dict>
-                    <key>dmg_root</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                    <key>dmg_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
-                </dict>
-                <key>Processor</key>
-                <string>DmgCreator</string>
-            </dict>
-            <dict>
-                <key>Arguments</key>
-                <dict>
-                    <key>path_list</key>
-                    <array>
-                        <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                    </array>
-                </dict>
-                <key>Processor</key>
-                <string>PathDeleter</string>
-            </dict>
-            <dict>
-                <key>Arguments</key>
-                <dict>
-                    <key>flat_pkg_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%.dmg/ClickShare_Launcher_*_Setup_Mac.pkg</string>
-                    <key>destination_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                </dict>
-                <key>Processor</key>
-                <string>FlatPkgUnpacker</string>
-            </dict>
-            <dict>
-                <key>Arguments</key>
-                <dict>
-                    <key>pkg_payload_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/clickshareLauncher.pkg/Payload</string>
-                    <key>destination_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/Applications</string>
-                </dict>
-                <key>Processor</key>
-                <string>PkgPayloadUnpacker</string>
-            </dict>
-            <dict>
-                <key>Arguments</key>
-                <dict>
-                    <key>faux_root</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                    <key>installs_item_paths</key>
-                    <array>
-                        <string>/Applications/ClickShare Launcher.app</string>
-                    </array>
-                </dict>
-                <key>Processor</key>
-                <string>MunkiInstallsItemsCreator</string>
-            </dict>
-            <dict>
-                <key>Arguments</key>
-                <dict>
-                    <key>path_list</key>
-                    <array>
-                        <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                    </array>
-                </dict>
-                <key>Processor</key>
-                <string>PathDeleter</string>
-            </dict>
-            <dict>
-                <key>Processor</key>
-                <string>MunkiPkginfoMerger</string>
-            </dict>
-            <dict>
-                <key>Arguments</key>
-                <dict>
-                    <key>additional_pkginfo</key>
-                    <dict>
-                        <key>version</key>
-                        <string>%version%</string>
-                    </dict>
-                </dict>
-                <key>Processor</key>
-                <string>MunkiPkginfoMerger</string>
-            </dict>
             <dict>
                 <key>Arguments</key>
                 <dict>
                     <key>pkg_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+                    <string>%pkg_path%</string>
                     <key>repo_subdirectory</key>
                     <string>%MUNKI_REPO_SUBDIR%</string>
                 </dict>

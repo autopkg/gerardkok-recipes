@@ -77,7 +77,7 @@
                     <key>input_path</key>
                     <string>%RECIPE_CACHE_DIR%/%NAME%/Applications/ClickShare Launcher.app</string>
                     <key>requirement</key>
-                    <string>identifier "com.barco.clicksharelauncher" and certificate leaf = H"7e64d03e3a6331b9bd63c3e394ce9209cf2fdf73"</string>
+                    <string>anchor apple generic and identifier "com.barco.clicksharelauncher" and certificate leaf = H"7e64d03e3a6331b9bd63c3e394ce9209cf2fdf73"</string>
                 </dict>
             </dict>
             <dict>

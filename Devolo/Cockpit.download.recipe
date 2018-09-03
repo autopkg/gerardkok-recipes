@@ -21,9 +21,14 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>http://www.devolo.com/en/dLAN-software/devolo-Cockpit-simple-powerline-network-configuration</string>
+                    <string>https://stage.at.devolo.scalecommerce.cloud/support/downloads/download/devolo-cockpit.html</string>
                     <key>re_pattern</key>
-                    <string>href=\"(?P&lt;relative_url&gt;/downloads/software/software-devolo-cockpit-mac-v[0-9-]+.dmg)\".*Software\s-\sdevolo\sCockpit\s(?P&lt;version&gt;[0-9\.]+)\s-\sMac</string>
+                    <string>devolo Cockpit (?P&lt;version&gt;[0-9\.]+) - Mac.*?href=\"(?P&lt;url&gt;.*?/software-devolo-cockpit-mac-v[0-9-]+\.dmg)\"</string>
+                    <key>re_flags</key>
+                    <array>
+                        <string>MULTILINE</string>
+                        <string>DOTALL</string>
+                    </array>
                 </dict>
             </dict>
             <dict>
@@ -31,8 +36,6 @@
                 <dict>
                     <key>filename</key>
                     <string>%NAME%.dmg</string>
-                    <key>url</key>
-                    <string>http://www.devolo.com%relative_url%</string>
                 </dict>
                 <key>Processor</key>
                 <string>URLDownloader</string>

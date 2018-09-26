@@ -45,7 +45,8 @@ class SuffixSelector(Processor):
         release = self.env.get('OS_VERSION', '10.13')
         switcher = {
             '10.12': "_12",
-            '10.13': "_13"
+            '10.13': "_13",
+            '10.14': '_14'
         }
         self.env['suffix'] = switcher.get(release, "")
 

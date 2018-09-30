@@ -121,7 +121,7 @@
                     <key>installs_item_paths</key>
                     <array>
                         <string>/Library/Application Support/GPGTools/GPGSuite_Updater.app</string>
-                        <string>/Library/Mail/Bundles/GPGMail.mailbundle</string>
+                        <string>/Library/Mail/Bundles/GPGMailLoader.mailbundle</string>
                     </array>
                     <key>version_comparison_key</key>
                     <string>CFBundleVersion</string>

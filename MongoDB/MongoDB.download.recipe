@@ -11,7 +11,7 @@
             <key>NAME</key>
             <string>MongoDB</string>
             <key>URL</key>
-            <string>https://www.mongodb.com/download-center</string>
+            <string>https://www.mongodb.com/download-center?initial=true#community</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.3.1</string>

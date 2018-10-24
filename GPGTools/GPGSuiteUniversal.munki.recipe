@@ -92,6 +92,8 @@
                     <array>
                         <string>/Library/Application Support/GPGTools/GPGSuite_Updater.app</string>
                     </array>
+                    <key>version_comparison_key</key>
+                    <string>CFBundleVersion</string>
                 </dict>
                 <key>Processor</key>
                 <string>MunkiInstallsItemsCreator</string>

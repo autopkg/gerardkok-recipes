@@ -1,6 +1,6 @@
 # Signature verification fails for Cockpit 4.4.0
 
-Signatuer verification for Cockpit version 4.4.0 appears to fail. Mimicking CodeSignatureVerifier on the command line gives:
+Signature verification for Cockpit version 4.4.0 appears to fail. Mimicking CodeSignatureVerifier on the command line gives the following error:
 ```shell
 $ codesign --verify --verbose=1 /opt/devolo/share/devolonetsvc/updates/install/cockpit-installation.app
 /opt/devolo/share/devolonetsvc/updates/install/cockpit-installation.app: CSSMERR_TP_CERT_EXPIRED

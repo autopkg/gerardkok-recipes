@@ -31,7 +31,7 @@
                 <key>name</key>
                 <string>%NAME%</string>
 			    <key>minimum_os_version</key>
-			    <string>10.9</string>
+			    <string>10.12</string>
                 <key>blocking_applications</key>
                 <array>
                     <string>Mail</string>

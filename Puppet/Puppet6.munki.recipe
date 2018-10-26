@@ -3,9 +3,9 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Downloads Puppet5 and imports into Munki.</string>
+        <string>Downloads Puppet6 and imports into Munki.</string>
         <key>Identifier</key>
-        <string>com.github.gerardkok.munki.puppet5</string>
+        <string>com.github.gerardkok.munki.puppet6</string>
         <key>Input</key>
         <dict>
             <key>MUNKI_REPO_SUBDIR</key>
@@ -13,11 +13,11 @@
             <key>MUNKI_CATEGORY</key>
             <string>Support</string>
             <key>NAME</key>
-            <string>Puppet5</string>
+            <string>Puppet6</string>
             <key>OS_VERSION</key>
             <string>10.13</string>
             <key>URL</key>
-            <string>https://downloads.puppetlabs.com/mac/puppet5</string>
+            <string>https://downloads.puppetlabs.com/mac/puppet6</string>
             <key>pkginfo</key>
             <dict>
                 <key>catalogs</key>
@@ -35,7 +35,7 @@
                 <key>developer</key>
                 <string>Puppet</string>
                 <key>display_name</key>
-                <string>Puppet 5</string>
+                <string>Puppet 6</string>
                 <key>name</key>
                 <string>%NAME%</string>
                 <key>unattended_install</key>

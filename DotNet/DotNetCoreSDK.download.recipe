@@ -32,7 +32,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>https://www.microsoft.com%intermediate_url%</string>
+                    <string>https://dotnet.microsoft.com%intermediate_url%</string>
                     <key>re_pattern</key>
                     <string>href="(?P&lt;url&gt;https://download.visualstudio.microsoft.com/download/pr/[0-9A-Fa-f\-/]+/dotnet-sdk-(?P&lt;version&gt;[0-9\.]+)-osx-x64\.pkg)"</string>
                 </dict>

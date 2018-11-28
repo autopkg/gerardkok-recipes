@@ -21,9 +21,9 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>https://www.microsoft.com/net/download/core</string>
+                    <string>https://dotnet.microsoft.com/download</string>
                     <key>re_pattern</key>
-                    <string>href="(?P&lt;intermediate_url&gt;/[a-z\-/]+/dotnet-sdk-[0-9\.]+-macos-x64-installer)"</string>
+                    <string>href="(?P&lt;intermediate_url&gt;/download/thank-you/dotnet-sdk-[0-9\.]+-macos-x64-installer)"</string>
                 </dict>
             </dict>
             <dict>

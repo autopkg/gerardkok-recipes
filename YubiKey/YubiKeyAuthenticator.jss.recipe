@@ -28,7 +28,7 @@
 	<key>MinimumVersion</key>
 	<string>0.2.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.gerardkok.pkg.YubiKeyAuthenticator</string>
+	<string>com.github.gerardkok.download.YubiKeyAuthenticator</string>
 	<key>Process</key>
 	<array>
 		<dict>

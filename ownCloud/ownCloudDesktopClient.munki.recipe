@@ -43,13 +43,9 @@
         <key>MinimumVersion</key>
         <string>0.2.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.gerardkok.pkg.ownCloudDesktopClient</string>
+        <string>com.github.gerardkok.download.ownCloudDesktopClient</string>
         <key>Process</key>
         <array>
-            <dict>
-                <key>Processor</key>
-                <string>MunkiPkginfoMerger</string>
-            </dict>
             <dict>
                 <key>Arguments</key>
                 <dict>

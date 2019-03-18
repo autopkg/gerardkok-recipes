@@ -17,22 +17,18 @@
         <array>
             <dict>
                 <key>Processor</key>
-                <string>URLTextSearcher</string>
+                <string>GitHubReleasesInfoProvider</string>
                 <key>Arguments</key>
                 <dict>
-                    <key>url</key>
-                    <string>https://owncloud.org/install/</string>
-                    <key>re_pattern</key>
-                    <string>href=\"(https://download.owncloud.com/desktop/stable/ownCloud-[a-z0-9\-\.]+.pkg)\"</string>
-                    <key>result_output_var_name</key>
-                    <string>download_url</string>
+                    <key>asset_regex</key>
+                    <string>ownCloud.*\.pkg</string>
+                    <key>github_repo</key>
+                    <string>owncloud/client</string>
                 </dict>
             </dict>
             <dict>
                 <key>Arguments</key>
                 <dict>
-                    <key>url</key>
-                    <string>%download_url%</string>
                     <key>filename</key>
                     <string>%NAME%.pkg</string>
                 </dict>

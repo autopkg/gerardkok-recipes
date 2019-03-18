@@ -23,7 +23,7 @@
             <key>category</key>
             <string>%MUNKI_CATEGORY%</string>
             <key>description</key>
-            <string>Use the Yubico Authenticator for Desktop on your Microsoft Windows, Mac, or Linux computers to generate OATH credentials on your YubiKeys. </string>
+            <string>Use the Yubico Authenticator for Desktop on your Microsoft Windows, Mac, or Linux computers to generate OATH credentials on your YubiKeys.</string>
             <key>developer</key>
             <string>Yubico</string>
             <key>display_name</key>

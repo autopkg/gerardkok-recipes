@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-    <dict>
-        <key>Description</key>
-        <string>Downloads the latest version of Enpass and creates a package.</string>
-        <key>Identifier</key>
-        <string>com.github.gerardkok.pkg.enpass</string>
-        <key>Input</key>
-        <dict>
-            <key>NAME</key>
-            <string>Enpass</string>
-        </dict>
-        <key>MinimumVersion</key>
-        <string>1.0.0</string>
-        <key>ParentRecipe</key>
-        <string>com.github.gerardkok.download.enpass</string>
-        <key>Process</key>
-        <array>
-            <dict>
-                <key>Processor</key>
-                <string>AppPkgCreator</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>app_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/Enpass.app</string>
-                </dict>
-            </dict>
-        </array>
-    </dict>
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Enpass and creates a package.</string>
+	<key>Identifier</key>
+	<string>com.github.gerardkok.pkg.enpass</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Enpass</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.gerardkok.download.enpass</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%-%version%.pkg</string>
+				<key>source_pkg</key>
+				<string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>PkgCopier</string>
+		</dict>
+	</array>
+</dict>
 </plist>

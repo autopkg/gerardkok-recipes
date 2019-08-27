@@ -47,7 +47,7 @@
                     <key>source_path</key>
                     <string>%pathname%</string>
                     <key>destination_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/payload/usr/local/bin/%NAME%</string>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/payload/usr/local/bin/jq</string>
                 </dict>
             </dict>
             <dict>
@@ -73,7 +73,7 @@
                         <array>
                             <dict>
                                 <key>path</key>
-                                <string>usr/local/bin/%NAME%</string>
+                                <string>usr/local/bin/jq</string>
                                 <key>user</key>
                                 <string>root</string>
                                 <key>group</key>

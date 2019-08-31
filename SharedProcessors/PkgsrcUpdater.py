@@ -16,6 +16,7 @@
 
 # work in progress, do not use
 
+from __future__ import absolute_import
 import os
 import shutil
 import subprocess

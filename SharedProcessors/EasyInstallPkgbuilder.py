@@ -14,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import absolute_import
 import os
 import shutil
 import tempfile
@@ -77,7 +78,7 @@ class EasyInstallPkgbuilder(Processor):
         postinstall_path = os.path.join(scriptsdir, 'postinstall')
         with open(postinstall_path, 'w') as postinstall_script:
             postinstall_script.write("#!/bin/sh\n\nworking_dir=`/usr/bin/dirname \"${0}\"`\n/usr/bin/easy_install \"${working_dir}/%s\"\n" % modulename)
-        os.chmod(postinstall_path, 0755)
+        os.chmod(postinstall_path, 0o755)
     
 
     def main(self):

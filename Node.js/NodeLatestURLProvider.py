@@ -15,8 +15,8 @@
 # limitations under the License.
 
 from __future__ import absolute_import
-from autopkglib import Processor
 
+from autopkglib import Processor
 
 __all__ = ["NodeLatestURLProvider"]
 

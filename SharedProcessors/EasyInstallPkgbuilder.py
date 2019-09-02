@@ -15,10 +15,11 @@
 # limitations under the License.
 
 from __future__ import absolute_import
+
 import os
 import shutil
-import tempfile
 import subprocess
+import tempfile
 
 from autopkglib import Processor, ProcessorError
 
@@ -70,16 +71,16 @@ class EasyInstallPkgbuilder(Processor):
         else:
              raise ProcessorError(
                  "Can't find binary %s: %s" % ('/usr/bin/pkgbuild', e.strerror))
-             
-             
-    def make_postinstall_script(self, scriptsdir, modulepath):    
+
+
+    def make_postinstall_script(self, scriptsdir, modulepath):
         modulename = os.path.basename(modulepath)
         shutil.copyfile(modulepath, os.path.join(scriptsdir, modulename))
         postinstall_path = os.path.join(scriptsdir, 'postinstall')
         with open(postinstall_path, 'w') as postinstall_script:
             postinstall_script.write("#!/bin/sh\n\nworking_dir=`/usr/bin/dirname \"${0}\"`\n/usr/bin/easy_install \"${working_dir}/%s\"\n" % modulename)
         os.chmod(postinstall_path, 0o755)
-    
+
 
     def main(self):
         python_pkg_path = self.env['python_pkg_path']
@@ -92,9 +93,8 @@ class EasyInstallPkgbuilder(Processor):
             self.pkgbuild(scriptsdir, identifier, version, pkgpath)
         finally:
             shutil.rmtree(scriptsdir)
- 
-                
+
+
 if __name__ == '__main__':
     processor = EasyInstallScriptCreator()
     processor.execute_shell()
-    

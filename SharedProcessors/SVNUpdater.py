@@ -17,13 +17,13 @@
 # work in progress, do not use
 
 from __future__ import absolute_import
+
 import os
+import re
 import shutil
 import subprocess
-import re
 
 from autopkglib import Processor, ProcessorError
-
 
 __all__ = ["SVNUpdater"]
 
@@ -131,4 +131,3 @@ class SVNUpdater(Processor):
 if __name__ == '__main__':
     processor = SVNUpdater()
     processor.execute_shell()
-    

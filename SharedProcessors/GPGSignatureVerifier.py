@@ -28,7 +28,7 @@ __all__ = ["GPGSignatureVerifier"]
 
 
 def check_for_goodsig(string):
-    return re.search("^\\[GNUPG:\\] GOODSIG ([0-9A-F]{8,})", string, re.M)
+    return re.search(r"^\\[GNUPG:\\] GOODSIG ([0-9A-F]{8,})", string, re.M)
 
 
 class GPGSignatureVerifier(Processor):

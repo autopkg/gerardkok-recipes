@@ -15,7 +15,7 @@
     <string>0.4.0</string>
     <key>Process</key>
     <array>
-		    <dict>
+        <dict>
             <key>Processor</key>
             <string>URLTextSearcher</string>
             <key>Arguments</key>
@@ -40,7 +40,11 @@
                 <string>http://builds.scitools.com/all_builds/b%build%/Understand/understand-macosx.zip</string>
                 <key>filename</key>
                 <string>%NAME%.zip</string>
-	          </dict>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>EndOfCheckPhase</string>
         </dict>
         <dict>
             <key>Processor</key>
@@ -57,7 +61,14 @@
         </dict>
         <dict>
             <key>Processor</key>
-            <string>EndOfCheckPhase</string>
+            <string>CodeSignatureVerifier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/Understand-%version%.%build%-MacOSX-x86.dmg/Understand.app</string>
+                <key>requirements</key>
+                <string>identifier "com.scitools.Understand" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = CNU9P2K643</string>
+            </dict>
         </dict>
     </array>
 </dict>

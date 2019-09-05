@@ -16,13 +16,13 @@
 
 # work in progress, do not use
 
+from __future__ import absolute_import
+
 import os
-import shutil
-import subprocess
 import re
+import subprocess
 
 from autopkglib import Processor, ProcessorError
-
 
 __all__ = ["PkgsrcUpdater"]
 
@@ -37,8 +37,8 @@ def get_rev(str):
         return result.group(1)
     else:
         return 0
-    
-    
+
+
 class PkgsrcUpdater(Processor):
     """Keeps a pkgsrc package up to date."""
     description = __doc__
@@ -60,7 +60,7 @@ class PkgsrcUpdater(Processor):
         }
     }
 
-    
+
     def get_installed_version(self, pkg):
         pkg_info_cmd = ['/opt/pkg/bin/pkg_info', '-E', pkg]
         p = subprocess.Popen(pkg_info_cmd,
@@ -68,31 +68,31 @@ class PkgsrcUpdater(Processor):
             stderr=subprocess.PIPE)
         (out, err) = p.communicate()
         return out.split('-')[1]
-    
-    
+
+
     def is_installed(self, pkg):
         pkg_info_cmd = ['/opt/pkg/bin/pkg_info', '-E', pkg]
         p = subprocess.Popen(pkg_info_cmd,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
         return p.returncode == 0
-    
-    
+
+
     def run_update(self, pkg):
         pkgin_cmd = ['/opt/pkg/bin/pkgin', 'update', '-y', pkg]
         p = subprocess.Popen(pkgin_cmd,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
         return p.communicate()
-    
+
     def run_install(self, pkg):
         pkgin_cmd = ['/opt/pkg/bin/pkgin', 'install', '-y', pkg]
         p = subprocess.Popen(pkgin_cmd,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
         return p.communicate()
-        
-        
+
+
     def main(self):
         pkg = self.env['pkg']
         if self.is_installed(pkg):
@@ -110,9 +110,8 @@ class PkgsrcUpdater(Processor):
                     'pkg': pkg,
                 }
             }
- 
-                
+
+
 if __name__ == '__main__':
     processor = PkgsrcUpdater()
     processor.execute_shell()
-    

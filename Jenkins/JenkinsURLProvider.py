@@ -15,10 +15,12 @@
 # limitations under the License.
 
 
-from autopkglib import Processor, ProcessorError
-import subprocess
-import re
+from __future__ import absolute_import
 
+import re
+import subprocess
+
+from autopkglib import Processor, ProcessorError
 
 __all__ = ["JenkinsURLProvider"]
 

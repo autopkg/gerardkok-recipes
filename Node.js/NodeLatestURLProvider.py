@@ -14,8 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from autopkglib import Processor
+from __future__ import absolute_import
 
+from autopkglib import Processor
 
 __all__ = ["NodeLatestURLProvider"]
 

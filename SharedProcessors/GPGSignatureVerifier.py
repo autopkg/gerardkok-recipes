@@ -16,19 +16,19 @@
 
 # work in progress, do not use
 
+from __future__ import absolute_import
+
 import os
-import shutil
-import subprocess
 import re
+import subprocess
 
 from autopkglib import Processor, ProcessorError
-
 
 __all__ = ["GPGSignatureVerifier"]
 
 
 def check_for_goodsig(string):
-    return re.search("^\\[GNUPG:\\] GOODSIG ([0-9A-F]{8,})", string, re.M)
+    return re.search(r"^\\[GNUPG:\\] GOODSIG ([0-9A-F]{8,})", string, re.M)
 
 
 class GPGSignatureVerifier(Processor):
@@ -58,7 +58,7 @@ class GPGSignatureVerifier(Processor):
             "description": "path to the distribution file."
         }
     }
-    
+
 
     def gpg_found(self):
         gpg_version_cmd = [self.env['gpg_path'], '--version']
@@ -71,8 +71,8 @@ class GPGSignatureVerifier(Processor):
             else:
                 raise ProcessorError("Finding gpg executable failed")
         return True
-    
-    
+
+
     def import_key(self):
         gpg_import_cmd = [self.env['gpg_path'], '--recv-keys', self.env['public_key_id']]
         try:
@@ -80,8 +80,8 @@ class GPGSignatureVerifier(Processor):
                 subprocess.call(gpg_import_cmd, stdout=devnull, stderr=devnull)
         except OSError as e:
             raise ProcessorError("Importing public key failed")
-        
-        
+
+
     def verify(self):
         gpg_verify_cmd = [self.env['gpg_path'], '--status-fd', '1', '--verify', self.env['signature_file'], self.env['distribution_file']]
         try:
@@ -93,7 +93,7 @@ class GPGSignatureVerifier(Processor):
         except:
             raise ProcessorError("Verifying signature failed")
 
-    
+
     def main(self):
         self.env['pathname'] = self.env['distribution_file']
         if self.gpg_found():
@@ -109,4 +109,3 @@ class GPGSignatureVerifier(Processor):
 if __name__ == '__main__':
     processor = GPGSignatureVerifier()
     processor.execute_shell()
-    

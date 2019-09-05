@@ -15,8 +15,9 @@
 # limitations under the License.
 
 
-from autopkglib import Processor, ProcessorError
+from __future__ import absolute_import
 
+from autopkglib import Processor, ProcessorError
 
 __all__ = ["VersionFixer"]
 
@@ -48,4 +49,3 @@ class VersionFixer(Processor):
 if __name__ == '__main__':
     processor = VersionFixer()
     processor.execute_shell()
-    

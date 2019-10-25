@@ -23,7 +23,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>source_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/ClickShare-Extension-Pack-*.pkg</string>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/R*/ClickShare-Extension-Pack-*.pkg</string>
                     <key>destination_path</key>
                     <string>%RECIPE_CACHE_DIR%/ClickShare-Extension-Pack.pkg</string>
                     <key>overwrite</key>

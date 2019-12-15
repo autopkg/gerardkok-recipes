@@ -21,9 +21,9 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>https://www.devolo.com/support/downloads/download/devolo-cockpit.html</string>
+                    <string>https://www.devolo.com/support/downloads/download/devolo-cockpit</string>
                     <key>re_pattern</key>
-                    <string>devolo Cockpit (?P&lt;version&gt;[0-9\.]+) - Mac.*?href=\"(?P&lt;url&gt;.*?-v[0-9-]+\.dmg)\"</string>
+                    <string>devolo Cockpit (?P&lt;version&gt;[0-9\.]+) -.*Mac.*?href=\"(?P&lt;url&gt;.*?-v[0-9-]+\.dmg)\"</string>
                     <key>re_flags</key>
                     <array>
                         <string>MULTILINE</string>

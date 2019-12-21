@@ -11,7 +11,7 @@
             <key>NAME</key>
             <string>Rust</string>
             <key>URL</key>
-            <string>https://forge.rust-lang.org/other-installation-methods.html</string>
+            <string>https://forge.rust-lang.org/infra/other-installation-methods.html</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.3.1</string>

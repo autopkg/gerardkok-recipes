@@ -11,7 +11,7 @@
             <key>NAME</key>
             <string>node</string>
             <key>RELEASE</key>
-            <string>latest-dubnium</string>
+            <string>latest</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.6.0</string>
@@ -19,20 +19,11 @@
         <array>
             <dict>
                 <key>Processor</key>
-                <string>NodeLatestURLProvider</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>release</key>
-                    <string>%RELEASE%</string>
-                </dict>
-            </dict>
-            <dict>
-                <key>Processor</key>
                 <string>URLTextSearcher</string>
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>%url%</string>
+                    <string>https://nodejs.org/dist/%RELEASE%</string>
                     <key>re_pattern</key>
                     <string>node-v([0-9\.]+).pkg</string>
                     <key>result_output_var_name</key>
@@ -48,12 +39,16 @@
                     <string>%url%/node-v%version%.pkg</string>
                 </dict>
             </dict>
-            <dict>   
-                <key>Processor</key>   
-                <string>CodeSignatureVerifier</string>   
-                <key>Arguments</key>   
-                <dict>   
-                    <key>input_path</key>   
+            <dict>
+                <key>Processor</key>
+                <string>EndOfCheckPhase</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>CodeSignatureVerifier</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>input_path</key>
                     <string>%pathname%</string>
                     <key>expected_authority_names</key>
                     <array>
@@ -62,10 +57,6 @@
                         <string>Apple Root CA</string>
                     </array>
                 </dict>
-            </dict>
-            <dict>
-                <key>Processor</key>
-                <string>EndOfCheckPhase</string>
             </dict>
         </array>
     </dict>

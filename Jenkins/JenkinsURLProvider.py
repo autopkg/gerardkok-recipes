@@ -18,42 +18,22 @@
 from __future__ import absolute_import
 
 import re
-import subprocess
+from distutils.version import LooseVersion
 
-from autopkglib import Processor, ProcessorError
+from autopkglib import Processor, ProcessorError, URLGetter
 
 __all__ = ["JenkinsURLProvider"]
 
 
-def get_location(str):
-    result = re.search(r'^Location:\s+(\S+)', str, re.MULTILINE)
-    if result:
-        return result.group(1)
-    else:
-        return None
-    
-    
-def get_version(str):
-    result = re.search(r'^http.+/jenkins-([0-9\.]+)\.pkg', str)
-    if result:
-        return result.group(1)
-    else:
-        return None
-
-
-class JenkinsURLProvider(Processor):
+class JenkinsURLProvider(URLGetter):
     description = "Returns url to the latest Jenkins package."
     input_variables = {
         "base_url": {
             "required": False,
-            "default": "http://mirrors.jenkins-ci.org/osx/latest",
-            "description": "Url redirecting to actual download Url. Defaults to 'http://mirrors.jenkins-ci.org/osx/latest'.",
+            "default": "http://mirrors.jenkins-ci.org/osx/",
+            "description": "URL that lists all available versions of Jenkins for macOS. "
+                           "Defaults to: 'http://mirrors.jenkins-ci.org/osx/'.",
         },
-        "CURL_PATH": {
-            "required": False,
-            "default": "/usr/bin/curl",
-            "description": "Path to curl binary. Defaults to /usr/bin/curl."
-        }
     }
     output_variables = {
         "url": {
@@ -63,33 +43,27 @@ class JenkinsURLProvider(Processor):
             "description": "version."
         }
     }
-    
-    __doc__ = description
-    
-    
-    def get_redirect_url(self, base_url):
-        try:
-            cmd = [self.env['CURL_PATH'], '-I', '--location']
-            cmd.append(base_url)
-            proc = subprocess.Popen(
-                cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            (content, stderr) = proc.communicate()
-            if proc.returncode:
-                raise ProcessorError(
-                    'Could not retrieve URL %s: %s' % (url, stderr))
-        except OSError:
-            raise ProcessorError('Could not retrieve URL: %s' % url)
-        return get_location(content)
 
-    
+    __doc__ = description
+
+    def get_latest_version(self, base_url):
+        '''Given a base URL, determine the "highest" or "latest" available Jenkins version.'''
+
+        raw_html = self.download(base_url, text=True)
+        version_pattern = r'href="jenkins-([\d\.]+)\.pkg"'
+        all_versions = re.findall(version_pattern, raw_html)
+        if not all_versions:
+            raise ProcessorError('Unable to parse available Jenkins versions.')
+
+        return max(all_versions, key=LooseVersion)
+
     def main(self):
         base_url = self.env['base_url']
-        redirect_url = self.get_redirect_url(base_url)  
-        version = get_version(redirect_url)
-        self.env['url'] = redirect_url
+        version = self.get_latest_version(base_url)
+        self.env['url'] = 'http://mirrors.jenkins-ci.org/osx/jenkins-%s.pkg' % version
         self.env['version'] = version
-   
+
 
 if __name__ == '__main__':
-    processor = JenkinsURLProvider()
-    processor.execute_shell()
+    PROCESSOR = JenkinsURLProvider()
+    PROCESSOR.execute_shell()

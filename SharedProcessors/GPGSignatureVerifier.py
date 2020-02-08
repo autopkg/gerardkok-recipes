@@ -89,7 +89,7 @@ class GPGSignatureVerifier(Processor):
             (output, error) = proc.communicate()
             if proc.returncode:
                 raise ProcessorError("Verifying signature failed")
-            return check_for_goodsig(output)
+            return check_for_goodsig(output.decode("utf-8"))
         except:
             raise ProcessorError("Verifying signature failed")
 

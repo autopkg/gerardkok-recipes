@@ -21,17 +21,81 @@
         <array>
             <dict>
                 <key>Processor</key>
-                <string>com.github.autopkg.gerardkok-recipes.SharedProcessors/EasyInstallPkgbuilder</string>
+                <string>PkgRootCreator</string>
                 <key>Arguments</key>
                 <dict>
-                    <key>python_pkg_path</key>
+                    <key>pkgroot</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                    <key>pkgdirs</key>
+                    <dict>
+                        <key>payload</key>
+                        <string>0755</string>
+                        <key>scripts</key>
+                        <string>0755</string>
+                    </dict>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>Copier</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>source_path</key>
                     <string>%pathname%</string>
-                    <key>identifier</key>
-                    <string>com.github.autopkg.gerardkok-recipes.%NAME%</string>
-                    <key>version</key>
-                    <string>%version%</string>
-                    <key>pkgpath</key>
-                    <string>%RECIPE_CACHE_DIR%/%PYTHON_PKG_NAME%.pkg</string>
+                    <key>destination_path</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/scripts/%filename%</string>
+                    <key>purge_destination</key>
+                    <true/>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>FileCreator</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>file_content</key>
+                    <string>#!/bin/sh
+
+working_dir=`/usr/bin/dirname "${0}"`
+/usr/bin/easy_install "${working_dir}/%filename%"
+</string>
+                    <key>file_path</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/scripts/postinstall</string>
+                    <key>file_mode</key>
+                    <string>0755</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>PkgCreator</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>pkg_request</key>
+                    <dict>
+                        <key>pkgroot</key>
+                        <string>%RECIPE_CACHE_DIR%/%NAME%/payload</string>
+                        <key>scripts</key>
+                        <string>%RECIPE_CACHE_DIR%/%NAME%/scripts</string>
+                        <key>pkgname</key>
+                        <string>%PYTHON_PKG_NAME%</string>
+                        <key>id</key>
+                        <string>com.github.autopkg.gerardkok-recipes.%NAME%</string>
+                        <key>version</key>
+                        <string>%version%</string>
+                        <key>options</key>
+                        <string>purge_ds_store</string>
+                    </dict>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>PathDeleter</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>path_list</key>
+                    <array>
+                        <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                    </array>
                 </dict>
             </dict>
         </array>

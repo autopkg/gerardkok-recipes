@@ -25,11 +25,6 @@
                 </dict>
             </dict>
             <dict>
-                <key>Arguments</key>
-                <dict>
-                    <key>url</key>
-                    <string>%url%</string>
-                </dict>
                 <key>Processor</key>
                 <string>URLDownloader</string>
             </dict>

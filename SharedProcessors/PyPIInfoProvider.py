@@ -35,12 +35,24 @@ class PyPIInfoProvider(URLGetter):
     }
     output_variables = {
         "url": {
-            "description": "download url"
+            "description": "download url of most recent version"
+        },
+        "filename": {
+            "description": "filename of most recent version"
         },
         "version": {
             "description": "most recent version"
         }
     }
+
+    def get_filename(self, version_info):
+        filenames = [r["filename"] for r in version_info if r["packagetype"] == "sdist"]
+        if filenames:
+            filename = filenames[0]
+            self.output("Found filename: %s" % filename)
+            return filename
+        else:
+            raise ProcessorError("No filename found.")
 
 
     def get_download_url(self, version_info):
@@ -61,6 +73,7 @@ class PyPIInfoProvider(URLGetter):
         version = pypi_info["info"]["version"]
         self.env["version"] = version
         self.env["url"] = self.get_download_url(pypi_info["releases"][version])
+        self.env["filename"] = self.get_filename(pypi_info["releases"][version])
 
                 
 if __name__ == '__main__':

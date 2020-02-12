@@ -18,7 +18,7 @@ Downloading the suite doesn't work from time to time; trying again usually works
 ## Python-package
 
 Work in progress. These are generic recipes to include Python packages in your AutoPkg run. I'm not entirely convinced myself that this is the right way to handle Python packages, but so far it serves my needs.
-The recipes require pypixmlrpc (`easy_install pypixmlrpc`). Creating an AutoPkg recipe for a Python package requires making an override, just like the AppStoreApp recipe by @nmcspadden (https://github.com/autopkg/nmcspadden-recipes.git).
+Creating an AutoPkg recipe for a Python package requires making an override, just like the AppStoreApp recipe by @nmcspadden (https://github.com/autopkg/nmcspadden-recipes.git).
 Run `autopkg make-override Python-package.munki.recipe -n MyPythonPackage.munki`, then edit the NAME and the PYTHON_PKG_NAME input variables, and any other Munki pkginfo fields you wish to change (description, developer).
 
 ## Shared processors

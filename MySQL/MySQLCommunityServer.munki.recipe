@@ -62,7 +62,7 @@
                     </array>
                 </dict>
                 <key>Processor</key>
-                <string>MunkiPkginfoReceiptsEditor</string>
+                <string>com.github.keeleysam.recipes.GoogleTalkPlugin/MunkiPkginfoReceiptsEditor</string>
             </dict>
         </array>
     </dict>

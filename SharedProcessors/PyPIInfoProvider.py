@@ -16,13 +16,15 @@
 
 from __future__ import absolute_import
 
-import xmlrpclib
+import json
 
-from autopkglib import Processor, ProcessorError
+from autopkglib import Processor, ProcessorError, URLGetter
 
 __all__ = ["PyPIInfoProvider"]
 
-class PyPIInfoProvider(Processor):
+PYPI_SIMPLE_API = "https://pypi.org/pypi/{0}/json"
+
+class PyPIInfoProvider(URLGetter):
     """Provides URL and version to the latest update. Requires xmlrpclib."""
     description = __doc__
     input_variables = {
@@ -41,19 +43,8 @@ class PyPIInfoProvider(Processor):
     }
 
 
-    def get_latest_version(self, client, package):
-        versions = client.package_releases(package)
-        if versions:
-            version = versions[0]
-            self.output("Found version: %s" % version)
-            return version
-        else:
-            raise ProcessorError("No versions to be found.")
-
-
-    def get_download_url(self, client, package, version):
-        release_urls = client.release_urls(package, version)
-        urls = [r["url"] for r in release_urls if r["packagetype"] == "sdist"]
+    def get_download_url(self, version_info):
+        urls = [r["url"] for r in version_info if r["packagetype"] == "sdist"]
         if urls:
             url = urls[0]
             self.output("Found url: %s" % url)
@@ -64,10 +55,12 @@ class PyPIInfoProvider(Processor):
 
     def main(self):
         package = self.env['python_package']
-        client = xmlrpclib.ServerProxy('https://pypi.python.org/pypi')
-        version = self.get_latest_version(client, package)
+        pypi_url = PYPI_SIMPLE_API.format(package)
+        response = self.download(pypi_url)
+        pypi_info = json.loads(response)
+        version = pypi_info["info"]["version"]
         self.env["version"] = version
-        self.env["url"] = self.get_download_url(client, package, version)
+        self.env["url"] = self.get_download_url(pypi_info["releases"][version])
 
                 
 if __name__ == '__main__':

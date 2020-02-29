@@ -29,16 +29,18 @@
                 <key>postinstall_script</key>
                 <string>#!/bin/sh
                     
-PLUGIN_SRC_PATH=/Applications/Airfoil.app/Contents/Frameworks/ExtrasInstaller.framework/Resources/InstantOn/InstantOn.driver.tgz
-PLUGIN_DST_DIR=/Library/Audio/Plug-Ins/HAL
-
-if [ -e "$PLUGIN_SRC_PATH" ]; then
-    /usr/bin/tar -C "$PLUGIN_DST_DIR" -xzf "$PLUGIN_SRC_PATH"
-    /bin/chmod -R go+rX "$PLUGIN_DST_DIR/InstantOn.driver"
-    /usr/sbin/chown -R root:wheel "$PLUGIN_DST_DIR/InstantOn.driver"
+# Installer of computer audio driver in app content's dir.
+# Skip this step if OS version is unsupported by ACE because installation of
+# driver would fail on such OS and entire package installation would fail..
+os_ver=`sw_vers -productVersion`
+if [[ "$os_ver" =~ 10.1[2345].* ]]; then
+    echo "Installing ACE driver..."
+    TARGET_LOCATION=`echo $2`
+    ACEINSTALLER=${TARGET_LOCATION}/Applications/Airfoil.app/Contents/Resources/aceinstaller
+    echo ${ACEINSTALLER}
+    ${ACEINSTALLER} install --silent
 else
-    echo "Expected $PLUGIN_DST_DIR/InstantOn.driver, but it was not present in the Airfoil app."
-    exit 1
+    echo "ACE driver does not support macOS ${os_ver}. Skip installation."
 fi
 </string>
                 <key>unattended_install</key>

@@ -57,7 +57,20 @@
                     <string>#!/bin/sh
 
 working_dir=`/usr/bin/dirname "${0}"`
+
+#Install python package for main python (likely python 2.x)
 /usr/bin/easy_install "${working_dir}/%filename%"
+
+#Install python package for python3.x, if present
+if [ -f /usr/local/bin/python3 ]
+then
+    python3_versions=($(/bin/ls -1 /usr/local/bin/easy_install*))
+    for version in "${python3_versions[@]}" 
+    do
+    :
+    $version "${working_dir}/%filename%"
+    done
+fi
 </string>
                     <key>file_path</key>
                     <string>%RECIPE_CACHE_DIR%/%NAME%/scripts/postinstall</string>

@@ -47,8 +47,15 @@
                 <dict>
                     <key>version</key>
                     <string>%version%</string>
-                    <key>version_comparison_key</key>
-                    <string>PackageVersion</string>
+                    <key>receipts</key>
+                    <array>
+                        <dict>
+                            <key>packageid</key>
+                            <string>in.sinew.Enpass-Desktop.App</string>
+                            <key>version</key>
+                            <string>%version%</string>
+                        </dict>
+                    </array>
                 </dict>
             </dict>
             <key>Processor</key>

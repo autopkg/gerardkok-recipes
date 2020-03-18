@@ -48,7 +48,7 @@
                     <key>version</key>
                     <string>%version%</string>
                     <key>version_comparison_key</key>
-                    <string>PackageVersion</key>
+                    <string>PackageVersion</string>
                 </dict>
             </dict>
             <key>Processor</key>

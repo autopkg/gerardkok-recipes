@@ -57,7 +57,25 @@
                     <string>#!/bin/sh
 
 working_dir=`/usr/bin/dirname "${0}"`
-/usr/bin/easy_install "${working_dir}/%filename%"
+main_python=`python --version 2>&amp;1`
+
+if [[ $main_python == *"Python 2."* ]]; then
+    #Install python package for python 2.x
+    /usr/bin/easy_install "${working_dir}/%filename%"
+
+    #Install python package for python3.x, if present
+    if [ -f /usr/local/bin/python3 ]; then
+        python3_versions=($(/bin/ls -1 /usr/local/bin/easy_install*))
+        for version in "${python3_versions[@]}" 
+        do
+        :
+        $version "${working_dir}/%filename%"
+        done
+    fi
+elif [[ $main_python == *"Python 3."* ]]; then
+    #Install python package for python 3.x only
+    /usr/bin/easy_install "${working_dir}/%filename%"
+fi
 </string>
                     <key>file_path</key>
                     <string>%RECIPE_CACHE_DIR%/%NAME%/scripts/postinstall</string>

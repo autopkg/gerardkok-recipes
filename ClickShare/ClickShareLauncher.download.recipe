@@ -25,7 +25,7 @@
                     <key>url</key>
                     <string>%URL%</string>
                     <key>re_pattern</key>
-                    <string>:&amp;quot;ClickShare Extension Pack&amp;quot;,&amp;quot;downloadUrl&amp;quot;:&amp;quot;(?P&lt;rel_url&gt;.*?)&amp;quot;,&amp;quot;icon&amp;quot;:&amp;quot;fa-file-zip-o&amp;quot;,&amp;quot;url&amp;quot;:&amp;quot;.*?&amp;quot;,&amp;quot;version&amp;quot;:&amp;quot;v(?P&lt;version&gt;[0-9\.]+)&amp;quot;</string>
+                    <string>:&amp;quot;ClickShare Extension Pack&amp;quot;,&amp;quot;downloadUrl&amp;quot;:&amp;quot;(?P&lt;rel_url&gt;.*?)&amp;quot;,&amp;quot;icon&amp;quot;.*?&amp;quot;,&amp;quot;version&amp;quot;:&amp;quot;v(?P&lt;version&gt;[0-9\.]+)&amp;quot;</string>
                 </dict>
             </dict>
             <dict>

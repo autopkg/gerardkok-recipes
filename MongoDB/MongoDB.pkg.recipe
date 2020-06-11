@@ -32,10 +32,6 @@
                         <string>0755</string>
                         <key>usr/local</key>
                         <string>0755</string>
-                        <key>data</key>
-                        <string>0775</string>
-                        <key>data/db</key>
-                        <string>0775</string>
                         <key>etc</key>
                         <string>0755</string>
                         <key>etc/paths.d</key>
@@ -78,7 +74,7 @@
                     <string>0755</string>
                     <key>file_content</key>
                     <string>/usr/local/mongodb/bin
-</string>
+                    </string>
                 </dict>
             </dict>
             <dict>

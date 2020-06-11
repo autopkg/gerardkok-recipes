@@ -62,7 +62,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>source</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/Source/mongodb-osx-x86_64-%version%</string>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/Source/mongodb-macos-x86_64-%version%</string>
                     <key>target</key>
                     <string>%pkgroot%/usr/local/mongodb</string>
                 </dict>

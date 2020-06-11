@@ -108,22 +108,6 @@
                             </dict>
                             <dict>
                                 <key>path</key>
-                                <string>data</string>
-                                <key>user</key>
-                                <string>root</string>
-                                <key>group</key>
-                                <string>staff</string>
-                            </dict>
-                            <dict>
-                                <key>path</key>
-                                <string>data/db</string>
-                                <key>user</key>
-                                <string>root</string>
-                                <key>group</key>
-                                <string>staff</string>
-                            </dict>
-                            <dict>
-                                <key>path</key>
                                 <string>etc/paths.d/mongodb</string>
                                 <key>user</key>
                                 <string>root</string>

@@ -11,7 +11,7 @@
             <key>NAME</key>
             <string>MongoDB</string>
             <key>URL</key>
-            <string>https://www.mongodb.com/download-center/community?initial=true</string>
+            <string>https://www.mongodb.com/try/download/community</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.3.1</string>
@@ -25,14 +25,16 @@
                     <key>url</key>
                     <string>%URL%</string>
                     <key>re_pattern</key>
-                    <string>(?P&lt;url&gt;https://fastdl.mongodb.org/osx/mongodb-osx-ssl-x86_64-(?P&lt;version&gt;[0-9\.]+).tgz)</string>
-                </dict>
+                    <string>name="version".*?value="(?P&lt;version&gt;[0-9\.]+)"</string>
+               </dict>
             </dict>
             <dict>
                 <key>Arguments</key>
                 <dict>
                     <key>filename</key>
                     <string>%NAME%.tgz</string>
+                    <key>url</key>
+                    <string>https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-%version%.tgz</string>
                 </dict>
                 <key>Processor</key>
                 <string>URLDownloader</string>

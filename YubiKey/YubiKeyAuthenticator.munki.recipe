@@ -27,7 +27,7 @@
             <key>developer</key>
             <string>Yubico</string>
             <key>display_name</key>
-            <string>YubiKey Personalization Tool</string>
+            <string>Yubico Authenticator</string>
             <key>name</key>
             <string>%NAME%</string>
             <key>unattended_install</key>

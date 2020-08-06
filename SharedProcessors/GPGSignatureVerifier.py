@@ -51,7 +51,7 @@ class GPGSignatureVerifier(Processor):
         },
         "keyserver": {
             "required": False,
-            "default": 'hkps://keys.openpgp.org',
+            "default": "hkps://keys.openpgp.org",
             "description": "key server to retrieve public key from"
         },
         "distribution_file": {

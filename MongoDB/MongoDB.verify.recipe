@@ -12,6 +12,8 @@
             <string>MongoDB</string>
             <key>KEYID</key>
             <string>656408E390CFB1F5</string>
+            <key>KEYSERVER</key>
+            <string>hkps://keyserver.ubuntu.com</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.0</string>
@@ -37,6 +39,8 @@
                 <dict>
                     <key>public_key_id</key>
                     <string>%KEYID%</string>
+                    <key>keyserver</key>
+                    <string>%KEYSERVER%</string>
                     <key>distribution_file</key>
                     <string>%RECIPE_CACHE_DIR%/downloads/%NAME%.tgz</string>
                     <key>signature_file</key>

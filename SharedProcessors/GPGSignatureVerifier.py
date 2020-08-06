@@ -49,6 +49,11 @@ class GPGSignatureVerifier(Processor):
             "required": True,
             "description": "public key id to import"
         },
+        "keyserver": {
+            "required": False,
+            "default": 'hkps://keys.openpgp.org',
+            "description": "key server to retrieve public key from"
+        },
         "distribution_file": {
             "required": True,
             "description": "file to verify"
@@ -81,7 +86,7 @@ class GPGSignatureVerifier(Processor):
 
     def import_key(self):
         """Import Key"""
-        gpg_import_cmd = [self.env['gpg_path'], '--recv-keys', self.env['public_key_id']]
+        gpg_import_cmd = [self.env['gpg_path'], '--keyserver', self.env['keyserver'], '--recv-keys', self.env['public_key_id']]
         try:
             with open(os.devnull, "w") as devnull:
                 subprocess.call(gpg_import_cmd, stdout=devnull, stderr=devnull)

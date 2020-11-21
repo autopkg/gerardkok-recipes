@@ -25,7 +25,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>http://dev.mysql.com/downloads/mysql/%RELEASE%.html</string>
+                    <string>https://dev.mysql.com/downloads/mysql/%RELEASE%.html</string>
                     <key>re_pattern</key>
                     <string>\((?P&lt;rel_url&gt;mysql-(?P&lt;version&gt;[0-9\.]+)-.*?dmg)\)</string>
                     <key>request_headers</key>

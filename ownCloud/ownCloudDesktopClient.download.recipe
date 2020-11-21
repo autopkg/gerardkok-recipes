@@ -23,7 +23,7 @@
                     <key>url</key>
                     <string>https://owncloud.com/desktop-app/</string>
                     <key>re_pattern</key>
-                    <string>href=\"(?P&lt;url&gt;https://download.owncloud.com/desktop/stable/ownCloud-(?P&lt;version&gt;[0-9\.]+).pkg)\"</string>
+                    <string>href=\"(?P&lt;url&gt;https://download.owncloud.com/desktop/ownCloud/stable/[0-9\.]+/mac/ownCloud-(?P&lt;version&gt;[0-9\.]+).pkg)\"</string>
                 </dict>
             </dict>
             <dict>

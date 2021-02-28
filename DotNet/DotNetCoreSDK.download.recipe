@@ -23,7 +23,7 @@
                     <key>url</key>
                     <string>https://dotnet.microsoft.com/download</string>
                     <key>re_pattern</key>
-                    <string>href="(?P&lt;intermediate_url&gt;/download/dotnet/thank-you/sdk-[0-9\.]+-macos-x64-installer)"</string>
+                    <string>href="(?P&lt;intermediate_url&gt;/download/dotnet/thank-you/sdk-3\.[0-9\.]+-macos-x64-installer)"</string>
                 </dict>
             </dict>
             <dict>

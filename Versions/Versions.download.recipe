@@ -19,15 +19,6 @@
         <array>
             <dict>
                 <key>Processor</key>
-                <string>DeprecationWarning</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>warning_message</key>
-                    <string>This recipe will soon be removed. Please remove it from your list of recipes.</string>
-                </dict>
-            </dict>
-            <dict>
-                <key>Processor</key>
                 <string>SparkleUpdateInfoProvider</string>
                 <key>Arguments</key>
                 <dict>
@@ -67,7 +58,7 @@
                     <key>input_path</key>
                     <string>%RECIPE_CACHE_DIR%/%NAME%/Versions.app</string>
                     <key>requirement</key>
-                    <string>anchor apple generic and identifier "com.blackpixel.versions" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "432ZXYXDNY")</string>
+                    <string>anchor apple generic and identifier "com.blackpixel.versions" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "2WB96AW889")</string>
                     <key>strict_verification</key>
                     <true />
                 </dict>

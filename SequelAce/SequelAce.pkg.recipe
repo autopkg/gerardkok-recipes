@@ -23,7 +23,7 @@
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/unpacked/Sequel Ace.app</string>
+                <string>%RECIPE_CACHE_DIR%/unpacked/Sequel Ace.app/Contents/Info.plist</string>
              </dict>
         </dict>
         <dict>           

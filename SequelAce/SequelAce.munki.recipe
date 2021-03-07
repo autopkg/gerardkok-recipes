@@ -9,7 +9,7 @@
     <key>Input</key>
     <dict>
         <key>NAME</key>
-        <string>Sequel Ace</string>
+        <string>SequelAce</string>
         <key>MUNKI_REPO_SUBDIR</key>
         <string>apps</string>
         <key>MUNKI_CATEGORY</key>

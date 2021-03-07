@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Downloads the latest version of Microsoft's .NET SDK.</string>
+        <key>Identifier</key>
+        <string>com.github.gerardkok.download.DotNetSDK</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>DotNetSDK</string>
+            <key>RELEASE</key>
+            <string>Current</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.3.1</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Processor</key>
+                <string>DotNetURLProvider</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>release</key>
+                    <string>%RELEASE%</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>URLTextSearcher</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>url</key>
+                    <string>%release_url%</string>
+                    <key>re_pattern</key>
+                    <string>href="(?P&lt;intermediate_url&gt;/download/dotnet/thank-you/sdk-[0-9\.]+-(?:[a-z0-9\.]+-)?macos-x64-installer)"</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>URLTextSearcher</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>url</key>
+                    <string>https://dotnet.microsoft.com%intermediate_url%</string>
+                    <key>re_pattern</key>
+                    <string>href="(?P&lt;url&gt;https://download.visualstudio.microsoft.com/download/pr/[0-9A-Fa-f\-/]+/dotnet-sdk-(?P&lt;version&gt;[0-9\.]+)-(?:[a-z0-9\.]+-)?osx-x64\.pkg)"</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>filename</key>
+                    <string>%NAME%.pkg</string>
+                </dict>
+                <key>Processor</key>
+                <string>URLDownloader</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>EndOfCheckPhase</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>CodeSignatureVerifier</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>input_path</key>
+                    <string>%pathname%</string>
+                    <key>expected_authority_names</key>
+                    <array>
+                        <string>Developer ID Installer: Microsoft Corporation (UBF8T346G9)</string>
+                        <string>Developer ID Certification Authority</string>
+                        <string>Apple Root CA</string>
+                    </array>
+                </dict>
+            </dict>
+        </array>
+    </dict>
+</plist>

@@ -17,15 +17,22 @@
     <string>com.github.gerardkok.download.SequelAce</string>
     <key>Process</key>
     <array>
-        <dict>
+        <dict>           
+            <key>Processor</key>
+            <string>Versioner</string>
+            <key>Arguments</key>
+            <dict>
+                <key>input_plist_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/Sequel Ace.app</string>
+             </dict>
+        </dict>
+        <dict>           
             <key>Processor</key>
             <string>AppPkgCreator</string>
             <key>Arguments</key>
             <dict>
                 <key>app_path</key>
                 <string>%RECIPE_CACHE_DIR%/%NAME%/Sequel Ace.app</string>
-                <key>version</key>
-                <string>%version%</string>
              </dict>
         </dict>
     </array>

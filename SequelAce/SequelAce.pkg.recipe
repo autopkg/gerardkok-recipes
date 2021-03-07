@@ -23,7 +23,7 @@
             <key>Arguments</key>
             <dict>
                 <key>input_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Sequel Ace.app</string>
+                <string>%RECIPE_CACHE_DIR%/unpacked/Sequel Ace.app</string>
              </dict>
         </dict>
         <dict>           
@@ -32,7 +32,7 @@
             <key>Arguments</key>
             <dict>
                 <key>app_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Sequel Ace.app</string>
+                <string>%RECIPE_CACHE_DIR%/unpacked/Sequel Ace.app</string>
              </dict>
         </dict>
     </array>

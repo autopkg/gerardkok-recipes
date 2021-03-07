@@ -33,8 +33,10 @@ class DotNetURLProvider(URLGetter):
     input_variables = {
         "release": {
             "required": False,
-            "description": "Major version. Valid values are:",
-            "default": "current",
+            "description": "Major version. Valid values are:"
+                            "- a version X.Y (e.g. '5.0'), or"
+                            "- a status: 'Preview', 'Current' or 'LTS'",
+            "default": "Current",
         },
     }
     output_variables = {

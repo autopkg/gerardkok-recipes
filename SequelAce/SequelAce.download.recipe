@@ -21,7 +21,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>asset_regex</key>
-                    <string>Sequel-Ace-[0-9\.]+\.zip</string>
+                    <string>Sequel-Ace-(?P&lt;version&gt;[0-9\.]+)\.zip</string>
                     <key>github_repo</key>
                     <string>Sequel-Ace/Sequel-Ace</string>
                 </dict>

@@ -41,33 +41,58 @@
         <key>MinimumVersion</key>
         <string>0.3.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.gerardkok.pkg.ImageOptim</string>
+        <string>com.github.gerardkok.download.ImageOptim</string>
         <key>Process</key>
         <array>
             <dict>
                 <key>Processor</key>
-                <string>MunkiPkginfoMerger</string>
+                <string>MunkiInstallsItemsCreator</string>
                 <key>Arguments</key>
                 <dict>
-                    <key>additional_pkginfo</key>
-                    <dict>
-                        <key>version</key>
-                        <string>%version%</string>
-                    </dict>
+                    <key>faux_root</key>
+                    <string>%pkgroot%</string>
+                    <key>installs_item_paths</key>
+                    <array>
+                        <string>/Applications/ImageOptim.app</string>
+                    </array>
                 </dict>
             </dict>
             <dict>
+                <key>Processor</key>
+                <string>MunkiPkginfoMerger</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>DmgCreator</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>dmg_path</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+                    <key>dmg_root</key>
+                    <string>%pkgroot%/Applications/</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>MunkiImporter</string>
                 <key>Arguments</key>
                 <dict>
                     <key>pkg_path</key>
-                    <string>%pkg_path%</string>
+                    <string>%dmg_path%</string>
                     <key>repo_subdirectory</key>
                     <string>%MUNKI_REPO_SUBDIR%</string>
-                    <key>version_comparison_key</key>
-                    <string>CFBundleVersion</string>
                 </dict>
+            </dict>
+            <dict>
                 <key>Processor</key>
-                <string>MunkiImporter</string>
+                <string>PathDeleter</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>path_list</key>
+                    <array>
+                        <string>%pkgroot%</string>
+                    </array>
+                </dict>
             </dict>
         </array>
     </dict>

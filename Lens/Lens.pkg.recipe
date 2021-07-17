@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>Comment</key>
+		<string>Workaround for invalid version (https://github.com/lensapp/lens/issues/3288)</string>
+		<key>Description</key>
+		<string>Downloads the latest version of Lens and creates a package.</string>
+		<key>Identifier</key>
+		<string>com.github.gerardkok.pkg.Lens</string>
+		<key>Input</key>
+		<dict>
+			<key>NAME</key>
+			<string>Lens</string>
+		</dict>
+		<key>MinimumVersion</key>
+		<string>1.0.0</string>
+		<key>ParentRecipe</key>
+		<string>com.github.ahousseini-recipes.download.Lens</string>
+		<key>Process</key>
+		<array>
+            <dict>
+                <key>Processor</key>
+                <string>com.github.homebysix.VersionSplitter/VersionSplitter</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>split_on</key>
+                    <string>-</string>
+                </dict>
+            </dict>
+			<dict>
+				<key>Processor</key>
+				<string>AppPkgCreator</string>
+			</dict>
+		</array>
+	</dict>
+</plist>

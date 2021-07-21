@@ -12,6 +12,9 @@
             <string>MySQLCommunityServer</string>
             <key>RELEASE</key>
             <string>8.0</string>
+            <key>ARCHITECTURE</key>
+            <!-- x86_64 or arm64 -->
+            <string>x86_64</string>
             <key>USER_AGENT</key>
             <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/536.28.10 (KHTML, like Gecko) Version/6.0.3 Safari/536.28.10</string>
         </dict>
@@ -27,7 +30,7 @@
                     <key>url</key>
                     <string>https://dev.mysql.com/downloads/mysql/%RELEASE%.html</string>
                     <key>re_pattern</key>
-                    <string>\((?P&lt;rel_url&gt;mysql-(?P&lt;version&gt;[0-9\.]+)-.*?dmg)\)</string>
+                    <string>\((?P&lt;rel_url&gt;mysql-(?P&lt;version&gt;[0-9\.]+)-.*-).*?dmg\)</string>
                     <key>request_headers</key>
                     <dict>
                         <key>user-agent</key>
@@ -39,7 +42,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>https://dev.mysql.com/get/Downloads/MySQL-%RELEASE%/%rel_url%</string>
+                    <string>https://dev.mysql.com/get/Downloads/MySQL-%RELEASE%/%rel_url%%ARCHITECTURE%.dmg</string>
                     <key>filename</key>
                     <string>%NAME%.dmg</string>
                 </dict>

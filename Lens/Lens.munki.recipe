@@ -37,7 +37,7 @@
         <key>MinimumVersion</key>
         <string>1.0.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.ahousseini-recipes.pkg.Lens</string>
+        <string>com.github.gerardkok.pkg.Lens</string>
         <key>Process</key>
         <array>
             <dict>

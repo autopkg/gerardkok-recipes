@@ -23,9 +23,7 @@
                 <key>url</key>
                 <string>https://www.splunk.com/en_us/download/universal-forwarder.html</string>
                 <key>re_pattern</key>
-                <string>(//download.splunk.com/products/universalforwarder/releases/(?P&lt;version&gt;[0-9\.]+)/osx/splunkforwarder-[0-9\.]+-[0-9a-f]+-darwin-64.tgz)</string>
-		        <key>result_output_var_name</key>
-		        <string>url</string>
+                <string>data-link=\"(?P&lt;url&gt;https://.*?/products/universalforwarder/releases/(?P&lt;version&gt;[0-9\.]+)/osx/splunkforwarder-[0-9\.]+-[0-9a-f]+-darwin-64.tgz)\"</string>
             </dict>
         </dict>
         <dict>
@@ -33,8 +31,6 @@
             <string>URLDownloader</string>
             <key>Arguments</key>
             <dict>
-                <key>url</key>
-                <string>https:%url%</string>
                 <key>filename</key>
                 <string>%NAME%.tgz</string>
 	        </dict>

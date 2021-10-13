@@ -11,7 +11,7 @@
             <key>NAME</key>
             <string>Helm</string>
             <key>MUNKI_REPO_SUBDIR</key>
-            <string>apps</string>
+            <string>apps/%NAME%</string>
             <key>MUNKI_CATEGORY</key>
             <string>Development</string>
             <key>PKG_ID</key>

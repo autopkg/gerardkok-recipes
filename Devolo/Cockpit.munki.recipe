@@ -54,7 +54,7 @@
     
 "/Applications/devolo/devolo Cockpit uninstall.app/Contents/MacOS/uninstall"
                         
-pkgutil forget de.devolo.dLAN.Cockpit
+pkgutil --forget de.devolo.dLAN.Cockpit
                         
 exit 0</string>
                 </dict>

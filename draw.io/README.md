@@ -1,0 +1,1 @@
+The drawio-desktop munki recipe depends on [@peshay](https://github.com/peshay)'s download recipe (https://github.com/autopkg/peshay-recipes/blob/master/drawio).

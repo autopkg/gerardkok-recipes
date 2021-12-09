@@ -22,7 +22,7 @@ import urllib.parse
 
 from autopkglib import Processor, ProcessorError, URLGetter
 
-BASE_URL = "https://dotnet.microsoft.com/download/dotnet/"
+BASE_URL = "https://dotnet.microsoft.com/en-us/download/dotnet/"
 
 __all__ = ["DotNetURLProvider"]
 
@@ -47,9 +47,9 @@ class DotNetURLProvider(URLGetter):
 
 
     def get_status_release(self, status):
-        raw_html = self.download("https://dotnet.microsoft.com/download/dotnet", text=True)
+        raw_html = self.download(BASE_URL, text=True)
 
-        release_re = rf'<a href="/download/dotnet/(\d\.\d).*?<span class="badge badge-([a-z]+)">'
+        release_re = rf'<a href="/en-us/download/dotnet/(\d\.\d).*?<span class="badge badge-([a-z]+)">'
         for (release, badge) in re.findall(release_re, raw_html, re.DOTALL):
             if badge == status:
                 return release

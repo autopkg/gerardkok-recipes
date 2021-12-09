@@ -34,7 +34,7 @@
                     <key>url</key>
                     <string>%release_url%</string>
                     <key>re_pattern</key>
-                    <string>href="(?P&lt;intermediate_url&gt;/download/dotnet/thank-you/sdk-[0-9\.]+-(?:[a-z0-9\.]+-)?macos-x64-installer)"</string>
+                    <string>href="(?P&lt;intermediate_url&gt;/en-us/download/dotnet/thank-you/sdk-[0-9\.]+-(?:[a-z0-9\.]+-)?macos-x64-installer)"</string>
                 </dict>
             </dict>
             <dict>

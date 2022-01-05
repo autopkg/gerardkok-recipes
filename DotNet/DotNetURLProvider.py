@@ -18,11 +18,10 @@
 from __future__ import absolute_import
 
 import re
-import urllib.parse
 
 from autopkglib import Processor, ProcessorError, URLGetter
 
-BASE_URL = "https://dotnet.microsoft.com/en-us/download/dotnet/"
+BASE_URL = "https://dotnet.microsoft.com"
 
 __all__ = ["DotNetURLProvider"]
 
@@ -38,6 +37,11 @@ class DotNetURLProvider(URLGetter):
                             "- a status: 'Preview', 'Current' or 'LTS'",
             "default": "Current",
         },
+        "language_code": {
+            "required": False,
+            "description": "Language code to use in urls",
+            "default": "en-us"
+        },
     }
     output_variables = {
         "release_url": {
@@ -46,10 +50,11 @@ class DotNetURLProvider(URLGetter):
     }
 
 
-    def get_status_release(self, status):
-        raw_html = self.download(BASE_URL, text=True)
+    def status_release(self, status, url_path):
+        base_url = f"{BASE_URL}/{url_path}"
+        raw_html = self.download(base_url, text=True)
 
-        release_re = rf'<a href="/en-us/download/dotnet/(\d\.\d).*?<span class="badge badge-([a-z]+)">'
+        release_re = rf'<a href="/{url_path}/(\d\.\d).*?<span class="badge badge-([a-z]+)">'
         for (release, badge) in re.findall(release_re, raw_html, re.DOTALL):
             if badge == status:
                 return release
@@ -57,24 +62,29 @@ class DotNetURLProvider(URLGetter):
         raise ProcessorError('Unable to find .DotNet status.')
 
 
-    def get_release_url(self, release):
-        m = re.match(r'^\d.\d$', release)
-        if m:
-            return urllib.parse.urljoin(BASE_URL, release)
-
-        status = release.lower()
-        status_release = self.get_status_release(status)
-        return urllib.parse.urljoin(BASE_URL, status_release)
-    
-    
-    def main(self):
-        release = self.env["release"]
+    def release(self, release, url_path):
         release_re = r'^(\d\.\d|preview|current|lts)$'
         m = re.match(release_re, release, re.IGNORECASE)
-        if m:
-            self.env["release_url"] = self.get_release_url(release)
-        else:
+        if not m:
             raise ProcessorError('Unable to parse .DotNet release.')
+
+        n = re.match(r'^\d.\d$', m.group())
+        if n:
+            return m.group()
+       
+        status = release.lower()
+        return self.status_release(status, url_path)
+
+
+    def release_url(self, release, url_path):
+        return f"{BASE_URL}/{url_path}/{self.release(release, url_path)}"
+   
+    
+    def main(self):
+        language_code = self.env["language_code"]
+        url_path = f"{language_code}/download/dotnet"
+        release = self.env["release"]
+        self.env["release_url"] = self.release_url(release, url_path)
 
 
 if __name__ == '__main__':

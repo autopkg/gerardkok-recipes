@@ -62,6 +62,8 @@
                 <dict>
                     <key>public_key_id</key>
                     <string>%KEYID%</string>
+                    <key>keyserver</key>
+                    <string>%KEYSERVER%</string>
                     <key>distribution_file</key>
                     <string>%pathname%</string>
                     <key>signature_file</key>

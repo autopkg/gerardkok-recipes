@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Download recipe for k9s.</string>
+        <key>Identifier</key>
+        <string>com.github.gerardkok.download.k9s</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>k9s</string>
+            <key>ARCHITECTURE</key>
+            <string>x86_64</string>
+            <!-- <string>arm64</string> -->
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.4.1</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Processor</key>
+                <string>GitHubReleasesInfoProvider</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>asset_regex</key>
+                    <string>k9s_Darwin_%ARCHITECTURE%.tar.gz</string>
+                    <key>github_repo</key>
+                    <string>derailed/k9s</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>filename</key>
+                    <string>%NAME%.tar.gz</string>
+                </dict>
+                <key>Processor</key>
+                <string>URLDownloader</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>EndOfCheckPhase</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>Unarchiver</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>archive_path</key>
+                    <string>%pathname%</string>
+                    <key>destination_path</key>
+                    <string>%RECIPE_CACHE_DIR%/unpacked</string>
+                    <key>purge_destination</key>
+                    <true/>
+                </dict>
+            </dict>
+        </array>
+    </dict>
+</plist>

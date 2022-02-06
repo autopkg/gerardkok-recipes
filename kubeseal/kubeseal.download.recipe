@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Description</key>
+        <string>Download recipe for kubeseal.</string>
+        <key>Identifier</key>
+        <string>com.github.gerardkok.download.kubeseal</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>kubeseal</string>
+        </dict>
+        <key>MinimumVersion</key>
+        <string>0.4.1</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Processor</key>
+                <string>GitHubReleasesInfoProvider</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>asset_regex</key>
+                    <string>kubeseal-[0-9\.]+-darwin-amd64.tar.gz</string>
+                    <key>github_repo</key>
+                    <string>bitnami-labs/sealed-secrets</string>
+                </dict>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>filename</key>
+                    <string>%NAME%.tar.gz</string>
+                </dict>
+                <key>Processor</key>
+                <string>URLDownloader</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>EndOfCheckPhase</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>Unarchiver</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>archive_path</key>
+                    <string>%pathname%</string>
+                    <key>destination_path</key>
+                    <string>%RECIPE_CACHE_DIR%/unpacked</string>
+                    <key>purge_destination</key>
+                    <true/>
+                </dict>
+            </dict>
+        </array>
+    </dict>
+</plist>

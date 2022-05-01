@@ -34,8 +34,8 @@ class DotNetURLProvider(URLGetter):
             "required": False,
             "description": "Major version. Valid values are:"
                             "- a version X.Y (e.g. '5.0'), or"
-                            "- a status: 'Preview', 'Current' or 'LTS'",
-            "default": "Current",
+                            "- a status: 'Preview', 'LTS' or 'Maintenance'",
+            "default": "LTS",
         },
         "language_code": {
             "required": False,
@@ -63,7 +63,7 @@ class DotNetURLProvider(URLGetter):
 
 
     def release(self, release, url_path):
-        release_re = r'^(\d\.\d|preview|current|lts)$'
+        release_re = r'^(\d\.\d|preview|lts|maintenance)$'
         m = re.match(release_re, release, re.IGNORECASE)
         if not m:
             raise ProcessorError('Unable to parse .DotNet release.')
@@ -74,6 +74,7 @@ class DotNetURLProvider(URLGetter):
        
         status = release.lower()
         return self.status_release(status, url_path)
+
 
 
     def release_url(self, release, url_path):

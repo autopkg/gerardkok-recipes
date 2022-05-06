@@ -11,7 +11,7 @@
             <key>NAME</key>
             <string>DotNetSDK</string>
             <key>RELEASE</key>
-            <string>Current</string>
+            <string>LTS</string>
             <key>LANGUAGE_CODE</key>
             <string>en-us</string>
         </dict>

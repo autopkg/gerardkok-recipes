@@ -3,17 +3,23 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Downloads the latest version of Microsoft's .NET SDK.</string>
+        <string>Downloads the latest version of Microsoft's .NET SDK.
+
+Valid PLATFORM_ARCH arguments are:
+- "arm64": Downloads .NET for Apple Silicon Macs
+- "x64": Downloads .NET for Intel Macs (default)</string>
         <key>Identifier</key>
         <string>com.github.gerardkok.download.DotNetSDK</string>
         <key>Input</key>
         <dict>
-            <key>NAME</key>
-            <string>DotNetSDK</string>
-            <key>RELEASE</key>
-            <string>Current</string>
             <key>LANGUAGE_CODE</key>
             <string>en-us</string>
+            <key>NAME</key>
+            <string>DotNetSDK</string>
+            <key>PLATFORM_ARCH</key>
+            <string>x64</string>
+            <key>RELEASE</key>
+            <string>LTS</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.3.1</string>
@@ -38,7 +44,7 @@
                     <key>url</key>
                     <string>%release_url%</string>
                     <key>re_pattern</key>
-                    <string>href="(?P&lt;intermediate_url&gt;/%LANGUAGE_CODE%/download/dotnet/thank-you/sdk-[0-9\.]+-(?:[a-z0-9\.]+-)?macos-x64-installer)"</string>
+                    <string>href="(?P&lt;intermediate_url&gt;/%LANGUAGE_CODE%/download/dotnet/thank-you/sdk-[0-9\.]+-(?:[a-z0-9\.]+-)?macos-%PLATFORM_ARCH%-installer)"</string>
                 </dict>
             </dict>
             <dict>
@@ -49,14 +55,14 @@
                     <key>url</key>
                     <string>https://dotnet.microsoft.com%intermediate_url%</string>
                     <key>re_pattern</key>
-                    <string>href="(?P&lt;url&gt;https://download.visualstudio.microsoft.com/download/pr/[0-9A-Fa-f\-/]+/dotnet-sdk-(?P&lt;version&gt;[0-9\.]+)-(?:[a-z0-9\.]+-)?osx-x64\.pkg)"</string>
+                    <string>href="(?P&lt;url&gt;https://download.visualstudio.microsoft.com/download/pr/[0-9A-Fa-f\-/]+/dotnet-sdk-(?P&lt;version&gt;[0-9\.]+)-(?:[a-z0-9\.]+-)?osx-%PLATFORM_ARCH%\.pkg)"</string>
                 </dict>
             </dict>
             <dict>
                 <key>Arguments</key>
                 <dict>
                     <key>filename</key>
-                    <string>%NAME%.pkg</string>
+                    <string>%NAME%-%PLATFORM_ARCH%-%version%.pkg</string>
                 </dict>
                 <key>Processor</key>
                 <string>URLDownloader</string>

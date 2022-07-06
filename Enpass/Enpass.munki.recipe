@@ -20,6 +20,10 @@
             <array>
                 <string>testing</string>
             </array>
+            <key>blocking_applications</key>
+            <array>
+                <string>Enpass.app</string>
+            </array>
             <key>category</key>
             <string>%MUNKI_CATEGORY%</string>
             <key>description</key>
@@ -45,17 +49,25 @@
             <dict>
                 <key>additional_pkginfo</key>
                 <dict>
-                    <key>version</key>
-                    <string>%version%</string>
-                    <key>receipts</key>
+                    <key>installs</key>
                     <array>
                         <dict>
-                            <key>packageid</key>
+                            <key>CFBundleIdentifier</key>
                             <string>in.sinew.Enpass-Desktop.App</string>
-                            <key>version</key>
+                            <key>CFBundleName</key>
+                            <string>Enpass</string>
+                            <key>CFBundleShortVersionString</key>
                             <string>%version%</string>
+                            <key>path</key>
+                            <string>/Applications/Enpass.app</string>
+                            <key>type</key>
+                            <string>application</string>
+                            <key>version_comparison_key</key>
+                            <string>CFBundleShortVersionString</string>
                         </dict>
                     </array>
+                    <key>version</key>
+                    <string>%version%</string>
                 </dict>
             </dict>
             <key>Processor</key>

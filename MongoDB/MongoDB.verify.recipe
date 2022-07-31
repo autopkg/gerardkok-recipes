@@ -13,7 +13,7 @@
             <key>KEYID</key>
             <string>4B7C549A058F8B6B</string>
             <key>KEYSERVER</key>
-            <string>hkps://keys.openpgp.org</string>
+            <string>hkps://keyserver.ubuntu.com</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.0</string>

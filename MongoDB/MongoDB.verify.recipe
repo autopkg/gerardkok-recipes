@@ -11,9 +11,9 @@
             <key>NAME</key>
             <string>MongoDB</string>
             <key>KEYID</key>
-            <string>B00A0BD1E2C63C11</string>
+            <string>6A26B1AE64C3C388</string>
             <key>KEYSERVER</key>
-            <string>hkps://keys.openpgp.org</string>
+            <string>hkps://keyserver.ubuntu.com</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.0</string>

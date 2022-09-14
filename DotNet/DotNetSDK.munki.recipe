@@ -66,6 +66,15 @@
             <dict>
                 <key>Arguments</key>
                 <dict>
+                    <key>predicate</key>
+                    <string>pkginfo_repo_path == ''</string>
+                </dict>
+                <key>Processor</key>
+                <string>StopProcessingIf</string>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
                     <key>pkg_ids_set_optional_true</key>
                     <array>
                         <string>com.microsoft.dotnet.sharedhost.component.osx.x64</string>

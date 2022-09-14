@@ -6,10 +6,6 @@ Recipes for AutoPkg (https://github.com/autopkg/autopkg).
 
 The recipe for Scribus is just a Munki importer for a download recipe by @hansen_m, so you'll have to add his autopkg repo (https://github.com/autopkg/hansen-m-recipes.git) to your autopkg repo list, before the Scribus munki recipe will work.
 
-## DotNetCoreSDK recipe
-
-The DotNetCoreSDK munki recipe depends on [@keeleysam](https://github.com/keeleysam)'s [MunkiPkginfoReceiptsEditor](https://github.com/autopkg/keeleysam-recipes/blob/master/GoogleTalkPlugin/MunkiPkginfoReceiptsEditor.py) to set 'com.microsoft.dotnet.sharedhost.component.osx.x64' to optional, because the installer sometimes contains multiple different versions of that package.
-
 ## GPGTools recipe
 
 Work in progress. The recipe does not add an uninstall script to the munki pkgsinfo yet, and no verification that the download is legitimate is being done yet.

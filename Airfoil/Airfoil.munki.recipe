@@ -54,10 +54,34 @@ fi
         <key>MinimumVersion</key>
         <string>0.2.0</string>
         <key>ParentRecipe</key>
-        <string>com.github.gerardkok.pkg.airfoil</string>
+        <string>com.github.gerardkok.download.airfoil</string>
         <key>Process</key>
         <array>
+        <dict>
+            <key>Processor</key>
+            <string>PathDeleter</string>
+            <key>Arguments</key>
             <dict>
+                <key>path_list</key>
+                <array>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%/Airfoil Satellite.app</string>
+                </array>
+            </dict>
+        </dict>
+        <dict>
+            <key>Processor</key>
+            <string>DmgCreator</string>
+            <key>Arguments</key>
+            <dict>
+                <key>dmg_path</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+                <key>dmg_root</key>
+                <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%</string>
+            </dict>
+        </dict>
+            <dict>
+                <key>Processor</key>
+                <string>MunkiImporter</string>
                 <key>Arguments</key>
                 <dict>
                     <key>pkg_path</key>
@@ -65,8 +89,6 @@ fi
                     <key>repo_subdirectory</key>
                     <string>%MUNKI_REPO_SUBDIR%</string>
                 </dict>
-                <key>Processor</key>
-                <string>MunkiImporter</string>
             </dict>
         </array>
     </dict>

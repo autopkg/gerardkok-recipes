@@ -25,16 +25,14 @@
                     <key>url</key>
                     <string>%URL%</string>
                     <key>re_pattern</key>
-                    <string>name="version".*?value="(?P&lt;version&gt;[0-9\.]+)"</string>
-               </dict>
+                    <string>\"macOS\":{\"tgz\":\"(?P&lt;url&gt;https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-(?P&lt;version&gt;[0-9\.]+).tgz)\"}</string>
+                </dict>
             </dict>
             <dict>
                 <key>Arguments</key>
                 <dict>
                     <key>filename</key>
                     <string>%NAME%.tgz</string>
-                    <key>url</key>
-                    <string>https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-%version%.tgz</string>
                 </dict>
                 <key>Processor</key>
                 <string>URLDownloader</string>

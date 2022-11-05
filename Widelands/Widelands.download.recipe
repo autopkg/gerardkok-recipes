@@ -17,15 +17,13 @@
 		<array>
 			<dict>
 				<key>Processor</key>
-				<string>URLTextSearcher</string>
+				<string>GitHubReleasesInfoProvider</string>
 				<key>Arguments</key>
 				<dict>
-					<key>url</key>
-					<string>https://wl.widelands.org/wiki/Download</string>
-					<key>re_pattern</key>
-					<string>(https://launchpad.net/widelands/[0-9\.x]+/[0-9\.]+/\+download/widelands_[0-9\.]+_(?P&lt;version&gt;[0-9\.]+)\.dmg)</string>
-					<key>result_output_var_name</key>
-					<string>url</string>
+					<key>asset_regex</key>
+					<string>Widelands-[0-9\.]*-MacOS[0-9]*\.dmg</string>
+					<key>github_repo</key>
+					<string>widelands/widelands</string>
 				</dict>
 			</dict>
 			<dict>

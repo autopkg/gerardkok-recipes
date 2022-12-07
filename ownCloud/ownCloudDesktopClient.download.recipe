@@ -23,7 +23,9 @@
                     <key>url</key>
                     <string>https://owncloud.com/desktop-app/</string>
                     <key>re_pattern</key>
-                    <string>href=\"(?P&lt;url&gt;https://download.owncloud.com/desktop/ownCloud/stable/+[0-9\.]+/mac/ownCloud-(?P&lt;version&gt;[0-9\.]+).pkg)\"</string>
+                    <string>href=\"(https://download\.owncloud\.com/desktop/ownCloud/stable/([0-9]+(\.[0-9]+)+)/mac/ownCloud-([0-9]+(\.[0-9]+)+)-x86_64\.pkg)\"</string>
+                    <key>result_output_var_name</key>
+                    <string>DOWNLOAD_URL</string>
                 </dict>
             </dict>
             <dict>
@@ -31,6 +33,15 @@
                 <dict>
                     <key>filename</key>
                     <string>%NAME%.pkg</string>
+                    <key>request_headers</key>
+                    <dict>
+                        <key>Referer</key>
+                        <string>https://owncloud.com/</string>
+                        <key>user-agent</key>
+                        <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15</string>
+                    </dict>
+                    <key>url</key>
+                    <string>%DOWNLOAD_URL%</string>
                 </dict>
                 <key>Processor</key>
                 <string>URLDownloader</string>

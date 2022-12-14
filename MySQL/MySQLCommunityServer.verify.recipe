@@ -30,7 +30,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>http://dev.mysql.com/downloads/gpg/?file=%rel_url%%ARCHITECTURE%.dmg&amp;p=23</string>
+                    <string>https://dev.mysql.com/downloads/gpg/?file=%rel_url%%ARCHITECTURE%.dmg&amp;p=23</string>
                     <key>re_pattern</key>
                     <string>^(-----BEGIN PGP SIGNATURE-----.*-----END PGP SIGNATURE-----)$</string>
                     <key>re_flags</key>

@@ -30,8 +30,6 @@
                 <string>GPGSuite</string>
                 <key>name</key>
                 <string>%NAME%</string>
-			    <key>minimum_os_version</key>
-			    <string>10.12</string>
                 <key>blocking_applications</key>
                 <array>
                     <string>Mail</string>
@@ -86,6 +84,19 @@
             <dict>
                 <key>Arguments</key>
                 <dict>
+                    <key>re_pattern</key>
+                    <string>&lt;sparkle:minimumSystemVersion&gt;([0-9]*\.[0-9]+)&lt;/sparkle:minimumSystemVersion&gt;</string>
+                    <key>result_output_var_name</key>
+                    <string>min_os_ver</string>
+                    <key>url</key>
+                    <string>https://gpgtools.org/releases/gpgsuite/appcast.xml</string>
+                </dict>
+                <key>Processor</key>
+                <string>URLTextSearcher</string>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
                     <key>faux_root</key>
                     <string>%RECIPE_CACHE_DIR%/unpack</string>
                     <key>installs_item_paths</key>
@@ -120,6 +131,8 @@
                     <dict>
                         <key>version</key>
                         <string>%version%</string>
+                        <key>minimum_os_version</key>
+                        <string>%min_os_ver%</string>
                     </dict>
                 </dict>
                 <key>Processor</key>

@@ -11,7 +11,7 @@
             <key>NAME</key>
             <string>k9s</string>
             <key>ARCHITECTURE</key>
-            <string>x86_64</string>
+            <string>amd64</string>
             <!-- <string>arm64</string> -->
         </dict>
         <key>MinimumVersion</key>

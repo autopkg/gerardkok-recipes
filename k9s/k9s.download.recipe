@@ -11,7 +11,7 @@
             <key>NAME</key>
             <string>k9s</string>
             <key>ARCHITECTURE</key>
-            <string>x86_64</string>
+            <string>amd64</string>
             <!-- <string>arm64</string> -->
         </dict>
         <key>MinimumVersion</key>
@@ -25,8 +25,6 @@
                 <dict>
                     <key>asset_regex</key>
                     <string>k9s_Darwin_%ARCHITECTURE%.tar.gz</string>
-                    <key>sort_by_highest_tag_names</key>
-                    <string>true</string>
                     <key>github_repo</key>
                     <string>derailed/k9s</string>
                 </dict>

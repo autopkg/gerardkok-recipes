@@ -12,6 +12,8 @@
             <string>jq</string>
             <key>PKG_ID</key>
             <string>com.github.gerardkok.pkg.jq</string>
+            <key>BUILD_PREDICATE</key>
+            <string>download_changed == False</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.2.0</string>
@@ -19,6 +21,15 @@
         <string>com.github.gerardkok.verify.jq</string>
         <key>Process</key>
         <array>
+            <dict>
+                <key>Processor</key>
+                <string>StopProcessingIf</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>predicate</key>
+                    <string>%BUILD_PREDICATE%</string>
+                </dict>
+            </dict>
             <dict>
                 <key>Processor</key>
                 <string>PkgRootCreator</string>

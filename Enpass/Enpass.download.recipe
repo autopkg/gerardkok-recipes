@@ -10,8 +10,6 @@
 	<dict>
 		<key>NAME</key>
 		<string>Enpass</string>
-		<key>SPARKLE_FEED_URL</key>
-		<string>https://dl.sinew.in/mac/package/appcast.xml</string>
 	</dict>
 	<key>MinimumVersion</key>
 	<string>0.3.1</string>
@@ -46,7 +44,7 @@
 			<dict>
 				<key>expected_authority_names</key>
 				<array>
-					<string>Developer ID Installer: Sinew Software Systems Private Limited (7ADB8CC6TF)</string>
+					<string>Developer ID Installer: Enpass Technologies Private Limited (7ADB8CC6TF)</string>
 					<string>Developer ID Certification Authority</string>
 					<string>Apple Root CA</string>
 				</array>

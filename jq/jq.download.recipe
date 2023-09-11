@@ -10,6 +10,9 @@
         <dict>
             <key>NAME</key>
             <string>jq</string>
+            <key>PLATFORM_ARCH</key>
+            <string>amd64</string>
+            <!-- <string>arm64</string> -->
         </dict>
         <key>MinimumVersion</key>
         <string>0.4.1</string>
@@ -21,7 +24,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>asset_regex</key>
-                    <string>jq-osx-amd64</string>
+                    <string>jq-osx-%PLATFORM_ARCH%</string>
                     <key>github_repo</key>
                     <string>stedolan/jq</string>
                 </dict>

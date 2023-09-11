@@ -51,6 +51,15 @@
 			<string>Copier</string>
 		</dict>
 		<dict>
+			<key>Processor</key>
+			<string>com.github.autopkg.gerardkok-recipes.SharedProcessors/VersionFixer</string>
+			<key>Arguments</key>
+			<dict>
+				<key>version</key>
+				<string>%version%</string>
+			</dict>
+		</dict>
+		<dict>
 			<key>Arguments</key>
 			<dict>
 				<key>pkg_request</key>

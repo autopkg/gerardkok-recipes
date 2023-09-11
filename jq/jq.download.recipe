@@ -26,7 +26,7 @@
                     <key>asset_regex</key>
                     <string>jq-macos-%PLATFORM_ARCH%</string>
                     <key>github_repo</key>
-                    <string>stedolan/jq</string>
+                    <string>jqlang/jq</string>
                 </dict>
             </dict>
             <dict>

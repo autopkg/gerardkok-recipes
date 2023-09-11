@@ -24,7 +24,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>asset_regex</key>
-                    <string>jq-osx-%PLATFORM_ARCH%</string>
+                    <string>jq-macos-%PLATFORM_ARCH%</string>
                     <key>github_repo</key>
                     <string>stedolan/jq</string>
                 </dict>

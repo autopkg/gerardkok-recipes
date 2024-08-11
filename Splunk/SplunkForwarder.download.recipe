@@ -23,7 +23,7 @@
                 <key>url</key>
                 <string>https://www.splunk.com/en_us/download/universal-forwarder.html</string>
                 <key>re_pattern</key>
-                <string>data-link=\"(?P&lt;url&gt;https://.*?/products/universalforwarder/releases/(?P&lt;version&gt;[0-9\.]+)/osx/splunkforwarder-[0-9\.]+-[0-9a-f]+-darwin-64.tgz)\"</string>
+                <string>data-link=\"(?P&lt;url&gt;https://.*?/products/universalforwarder/releases/(?P&lt;version&gt;[0-9\.]+)/osx/splunkforwarder-[0-9\.]+-[0-9a-f]+-darwin-universal2.tgz)\"</string>
             </dict>
         </dict>
         <dict>

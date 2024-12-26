@@ -21,7 +21,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>asset_regex</key>
-                    <string>crystal-[0-9\.\-]+\.pkg</string>
+                    <string>crystal-[\d\.\-]+\.universal\.pkg</string>
                     <key>github_repo</key>
                     <string>crystal-lang/crystal</string>
                 </dict>

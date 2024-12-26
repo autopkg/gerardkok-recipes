@@ -14,71 +14,20 @@
         <string>com.scitools.Understand</string>
     </dict>
     <key>MinimumVersion</key>
-    <string>0.4.0</string>
+    <string>1.0</string>
     <key>ParentRecipe</key>
     <string>com.github.gerardkok.download.Understand</string>
     <key>Process</key>
     <array>
+    <dict>
+        <key>Processor</key>
+        <string>AppPkgCreator</string>
+        <key>Arguments</key>
         <dict>
-            <key>Processor</key>
-            <string>Copier</string>
-            <key>Arguments</key>
-            <dict>
-                <key>source_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Understand-%version%.%build%-MacOSX-x86.dmg/Understand.app</string>
-                <key>destination_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Understand.app</string>
-	        </dict>
+            <key>app_path</key>
+            <string>%pathname%/Understand.app</string>
         </dict>
-        <dict>
-            <key>Processor</key>
-            <string>PlistEditor</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Understand.app/Contents/Info.plist</string>
-                <key>output_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Understand.app/Contents/Info.plist</string>
-                <key>plist_data</key>
-                <dict>
-                    <key>CFBundleShortVersionString</key>
-                    <string>%version%.%build%</string>
-                    <key>CFBundleGetInfoString</key>
-                    <string>%version%.%build%, Copyright © 1990-2016 Scientific Toolworks Inc.</string>
-                </dict>
-	        </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-			<string>DmgCreator</string>
-			<key>Arguments</key>
-			<dict>
-                <key>dmg_root</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Understand.app</string>
-				<key>dmg_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
-			</dict>
-		</dict>
-        <dict>
-            <key>Processor</key>
-            <string>Versioner</string>
-            <key>Arguments</key>
-            <dict>
-                <key>input_plist_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/Understand.app/Contents/Info.plist</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>PathDeleter</string>
-            <key>Arguments</key>
-            <dict>
-                <key>path_list</key>
-                <array>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
-                </array>
-            </dict>
-        </dict>
+    </dict>
     </array>
 </dict>
 </plist>

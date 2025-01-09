@@ -3,7 +3,12 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Download recipe for the Puppet Development Kit.</string>
+        <string>Download recipe for the Puppet Development Kit.
+        
+Valid values for ARCH include:
+- "x86_64" (default, Intel)
+- "arm64" (Apple Silicon)
+</string>
         <key>Identifier</key>
         <string>com.github.gerardkok.download.pdk</string>
         <key>Input</key>
@@ -11,7 +16,9 @@
             <key>NAME</key>
             <string>PDK</string>
             <key>OS_VERSION</key>
-		    <string>10.12</string>
+            <string>13</string>
+            <key>ARCH</key>
+            <string>x86_64</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.5.0</string>
@@ -21,7 +28,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>https://pm.puppet.com/cgi-bin/pdk_download.cgi?dist=osx&amp;rel=%OS_VERSION%&amp;arch=x86_64&amp;ver=latest</string>
+                    <string>https://pm.puppet.com/cgi-bin/pdk_download.cgi?dist=osx&amp;rel=%OS_VERSION%&amp;arch=%ARCH%&amp;ver=latest</string>
                     <key>filename</key>
                     <string>%NAME%.dmg</string>
                 </dict>

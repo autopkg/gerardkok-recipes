@@ -21,18 +21,20 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>https://developers.yubico.com/yubioath-desktop/Releases/</string>
+                    <string>https://developers.yubico.com/yubioath-flutter/Releases/</string>
                     <key>re_pattern</key>
-                    <string>href=\"(?P&lt;relative_download_url&gt;yubioath-desktop-(?P&lt;version&gt;[0-9\.]+)-mac\.pkg)\"</string>
+                    <string>href="yubico-authenticator-([\d\.]+)-mac.dmg"</string>
+                    <key>result_output_var_name</key>
+                    <string>version</string>
                 </dict>
             </dict>
             <dict>
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>https://developers.yubico.com/yubioath-desktop/Releases/%relative_download_url%</string>
+                    <string>https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-%version%-mac.dmg</string>
                     <key>filename</key>
-                    <string>%NAME%.pkg</string>
+                    <string>%NAME%-%version%.dmg</string>
                 </dict>
                 <key>Processor</key>
                 <string>URLDownloader</string>
@@ -47,13 +49,9 @@
                 <key>Arguments</key>
                 <dict>
                     <key>input_path</key>
-                    <string>%pathname%</string>
-                    <key>expected_authority_names</key>
-                    <array>
-                        <string>Developer ID Installer: Yubico Limited (LQA3CS5MM7)</string>
-                        <string>Developer ID Certification Authority</string>
-                        <string>Apple Root CA</string>
-                    </array>
+                    <string>%pathname%/Yubico Authenticator.app</string>
+                    <key>requirement</key>
+                    <string>identifier "com.yubico.yubioath" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = LQA3CS5MM7</string>
                 </dict>
             </dict>
         </array>

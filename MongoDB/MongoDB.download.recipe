@@ -3,15 +3,20 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Download recipe for MongoDB.</string>
+        <string>Download recipe for MongoDB.
+        
+Values for ARCH include:
+- "x86_64" (default, Intel)
+- "arm64" (Apple Silicon)
+</string>
         <key>Identifier</key>
         <string>com.github.gerardkok.download.MongoDB</string>
         <key>Input</key>
         <dict>
             <key>NAME</key>
             <string>MongoDB</string>
-            <key>URL</key>
-            <string>https://www.mongodb.com/try/download/community</string>
+            <key>ARCH</key>
+            <string>x86_64</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.3.1</string>
@@ -23,16 +28,18 @@
                 <key>Arguments</key>
                 <dict>
                     <key>url</key>
-                    <string>%URL%</string>
+                    <string>https://www.mongodb.com/try/download/community-edition/releases</string>
                     <key>re_pattern</key>
-                    <string>\"macOS\":{\"tgz\":\"(?P&lt;url&gt;https://fastdl.mongodb.org/osx/mongodb-macos-x86_64-(?P&lt;version&gt;[0-9\.]+).tgz)\"}</string>
+                    <string>"(https://fastdl.mongodb.org/osx/mongodb-macos-%ARCH%-(?P&lt;version&gt;[\d\.]+)\.tgz)"</string>
+                    <key>result_output_var_name</key>
+                    <string>url</string>
                 </dict>
             </dict>
             <dict>
                 <key>Arguments</key>
                 <dict>
                     <key>filename</key>
-                    <string>%NAME%.tgz</string>
+                    <string>%NAME%-%version%-%ARCH%.tgz</string>
                 </dict>
                 <key>Processor</key>
                 <string>URLDownloader</string>

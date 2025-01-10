@@ -33,11 +33,11 @@
                 <key>display_name</key>
                 <string>MongoDB</string>
                 <key>name</key>
+                <string>%NAME%</string>
                 <key>supported_architectures</key>
                 <array>
                     <string>%ARCH%</string>
                 </array>
-                <string>%NAME%</string>
                 <key>unattended_install</key>
                 <true/>
             </dict>

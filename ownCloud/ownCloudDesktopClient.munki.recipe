@@ -3,7 +3,10 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Downloads the ownCloud Desktop Client and imports it into Munki.</string>
+        <string>Downloads the ownCloud Desktop Client and imports it into Munki.
+
+For Intel use: "x86_64" in the SUPPORTED_ARCH variable
+For Apple Silicon use: "arm64" in the SUPPORTED_ARCH variable</string>
         <key>Identifier</key>
         <string>com.github.gerardkok.munki.ownCloudDesktopClient</string>
         <key>Input</key>
@@ -14,6 +17,8 @@
             <string>Utilities</string>
             <key>NAME</key>
             <string>ownCloudDesktopClient</string>
+            <key>SUPPORTED_ARCH</key>
+            <string>x86_64</string>
             <key>pkginfo</key>
             <dict>
                 <key>catalogs</key>
@@ -34,6 +39,10 @@
                 <string>ownCloud Desktop Client</string>
                 <key>name</key>
                 <string>%NAME%</string>
+                <key>supported_architectures</key>
+                <array>
+                    <string>%SUPPORTED_ARCH%</string>
+                </array>
                 <key>unattended_install</key>
                 <true/>
             </dict>
@@ -67,6 +76,31 @@
                     <key>purge_destination</key>
                     <true/>
                 </dict>
+            </dict>
+            <dict>
+            <key>Arguments</key>
+                <dict>
+                    <key>re_pattern</key>
+                    <string>Mac OS X ([0-9]+(\.[0-9]+)+)\+</string>
+                    <key>result_output_var_name</key>
+                    <string>min_os_ver</string>
+                    <key>url</key>
+                    <string>https://owncloud.com/desktop-app/</string>
+                </dict>
+                <key>Processor</key>
+                <string>URLTextSearcher</string>
+            </dict>
+            <dict>
+                 <key>Arguments</key>
+                 <dict>
+                    <key>additional_pkginfo</key>
+                    <dict>
+                        <key>minimum_os_version</key>
+                        <string>%min_os_ver%</string>
+                    </dict>
+                </dict>
+                <key>Processor</key>
+                <string>MunkiPkginfoMerger</string>
             </dict>
             <dict>
                 <key>Processor</key>

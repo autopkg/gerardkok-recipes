@@ -3,13 +3,18 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Download recipe for the ownCloud desktop client.</string>
+        <string>Download recipe for the ownCloud desktop client.
+
+To download Apple Silicon use: "arm64" in the DOWNLOAD_ARCH variable
+To download Intel use: "x86_64" in the DOWNLOAD_ARCH variable</string>
         <key>Identifier</key>
         <string>com.github.gerardkok.download.ownCloudDesktopClient</string>
         <key>Input</key>
         <dict>
             <key>NAME</key>
             <string>ownCloudDesktopClient</string>
+            <key>DOWNLOAD_ARCH</key>
+            <string>x86_64</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.2.0</string>
@@ -23,7 +28,7 @@
                     <key>url</key>
                     <string>https://owncloud.com/desktop-app/</string>
                     <key>re_pattern</key>
-                    <string>href=\"(https://download\.owncloud\.com/desktop/ownCloud/stable/([0-9]+(\.[0-9]+)+)/mac/ownCloud-([0-9]+(\.[0-9]+)+)-x86_64\.pkg)\"</string>
+                    <string>href=\"(https://download\.owncloud\.com/desktop/ownCloud/[A-Za-z0-9]+/([0-9]+(\.[0-9]+)+)/mac/ownCloud-([0-9]+(\.[0-9]+)+)-%DOWNLOAD_ARCH%\.pkg)\"</string>
                     <key>result_output_var_name</key>
                     <string>DOWNLOAD_URL</string>
                 </dict>

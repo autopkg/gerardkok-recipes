@@ -16,7 +16,7 @@
             <!-- x86_64 or arm64 -->
             <string>x86_64</string>
             <key>USER_AGENT</key>
-            <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/536.28.10 (KHTML, like Gecko) Version/6.0.3 Safari/536.28.10</string>
+            <string>Mozilla/5.0 (Macintosh; Intel Mac OS X 14_7_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.3.1</string>
@@ -45,6 +45,8 @@
                     <string>https://dev.mysql.com/get/Downloads/MySQL-%RELEASE%/%rel_url%%ARCHITECTURE%.dmg</string>
                     <key>filename</key>
                     <string>%NAME%.dmg</string>
+                    <key>request_headers</key>
+                    <dict/>
                 </dict>
                 <key>Processor</key>
                 <string>URLDownloader</string>

@@ -3,21 +3,21 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Downloads the current release version of Helm and imports into Munki.</string>
+        <string>Downloads the current release version of Helm and imports into Munki. Set ARCH to either arm64 or x86_64.</string>
         <key>Identifier</key>
         <string>com.github.gerardkok.munki.Helm</string>
         <key>Input</key>
         <dict>
+            <key>ARCH</key>
+            <string>arm64</string>
             <key>NAME</key>
             <string>Helm</string>
             <key>MUNKI_REPO_SUBDIR</key>
-            <string>apps/%NAME%</string>
+            <string>apps/%NAME%/%ARCH%</string>
             <key>MUNKI_CATEGORY</key>
             <string>Development</string>
             <key>PKG_ID</key>
             <string>sh.helm.helm</string>
-            <key>PLATFORM_ARCH</key>
-            <string>amd64</string>
             <key>pkginfo</key>
             <dict>
                 <key>catalogs</key>
@@ -32,10 +32,21 @@
                 <string>Cloud Native Computing Foundation</string>
                 <key>display_name</key>
                 <string>%NAME%</string>
+                <key>minimum_os_version</key>
+                <string>12.0</string>
                 <key>name</key>
                 <string>%NAME%</string>
+                <key>supported_architectures</key>
+                <array>
+                    <string>%ARCH%</string>
+                </array>
                 <key>unattended_install</key>
                 <true/>
+                <key>unattended_uninstall</key>
+                <true/>
+                <key>version_script</key>
+                <string>#!/bin/sh
+/usr/local/bin/helm version | /usr/bin/awk 'match($0,/Version:"v[^"]*/){print substr($0,RSTART+10,RLENGTH-10); exit}'</string>
             </dict>
         </dict>
         <key>MinimumVersion</key>
@@ -45,6 +56,25 @@
         <key>Process</key>
         <array>
             <dict>
+                <key>Processor</key>
+                <string>MunkiInstallsItemsCreator</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>faux_root</key>
+                    <string>%RECIPE_CACHE_DIR%/payload</string>
+                    <key>installs_item_paths</key>
+                    <array>
+                        <string>/usr/local/bin/helm</string>
+                    </array>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>MunkiPkginfoMerger</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>MunkiImporter</string>
                 <key>Arguments</key>
                 <dict>
                     <key>pkg_path</key>
@@ -52,8 +82,18 @@
                     <key>repo_subdirectory</key>
                     <string>%MUNKI_REPO_SUBDIR%</string>
                 </dict>
+            </dict>
+            <dict>
                 <key>Processor</key>
-                <string>MunkiImporter</string>
+                <string>PathDeleter</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>path_list</key>
+                    <array>
+                        <string>%RECIPE_CACHE_DIR%/payload</string>
+                        <string>%RECIPE_CACHE_DIR%/unpacked</string>
+                    </array>
+                </dict>
             </dict>
         </array>
     </dict>

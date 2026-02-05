@@ -3,17 +3,17 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Builds a package that installs Helm.</string>
+        <string>Builds a package that installs Helm. Set ARCH to either arm64 or x86_64.</string>
         <key>Identifier</key>
         <string>com.github.gerardkok.pkg.Helm</string>
         <key>Input</key>
         <dict>
             <key>NAME</key>
             <string>Helm</string>
+            <key>ARCH</key>
+            <string>arm64</string>
             <key>PKG_ID</key>
             <string>sh.helm.helm</string>
-            <key>PLATFORM_ARCH</key>
-            <string>amd64</string>
         </dict>
         <key>MinimumVersion</key>
         <string>0.2.0</string>
@@ -23,20 +23,31 @@
         <array>
             <dict>
                 <key>Processor</key>
+                <string>Unarchiver</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>archive_path</key>
+                    <string>%pathname%</string>
+                    <key>destination_path</key>
+                    <string>%RECIPE_CACHE_DIR%/unpacked</string>
+                    <key>purge_destination</key>
+                    <true/>
+                </dict>
+            </dict>
+            <dict>
+                <key>Processor</key>
                 <string>PkgRootCreator</string>
                 <key>Arguments</key>
                 <dict>
                     <key>pkgroot</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                    <string>%RECIPE_CACHE_DIR%/payload</string>
                     <key>pkgdirs</key>
                     <dict>
-                        <key>payload</key>
+                        <key>usr</key>
                         <string>0755</string>
-                        <key>payload/usr</key>
+                        <key>usr/local</key>
                         <string>0755</string>
-                        <key>payload/usr/local</key>
-                        <string>0755</string>
-                        <key>payload/usr/local/bin</key>
+                        <key>usr/local/bin</key>
                         <string>0755</string>
                     </dict>
                 </dict>
@@ -47,9 +58,9 @@
                 <key>Arguments</key>
                 <dict>
                     <key>source_path</key>
-                    <string>%RECIPE_CACHE_DIR%/unpacked/darwin-%PLATFORM_ARCH%/helm</string>
+                    <string>%RECIPE_CACHE_DIR%/unpacked/*/helm</string>
                     <key>destination_path</key>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/payload/usr/local/bin/helm</string>
+                    <string>%RECIPE_CACHE_DIR%/payload/usr/local/bin/helm</string>
                 </dict>
             </dict>
             <dict>
@@ -60,9 +71,9 @@
                     <key>pkg_request</key>
                     <dict>
                         <key>pkgroot</key>
-                        <string>%RECIPE_CACHE_DIR%/%NAME%/payload</string>
+                        <string>%RECIPE_CACHE_DIR%/payload</string>
                         <key>pkgdir</key>
-                        <string>%RECIPE_CACHE_DIR%/%NAME%</string>
+                        <string>%RECIPE_CACHE_DIR%</string>
                         <key>pkgname</key>
                         <string>%NAME%-%version%</string>
                         <key>id</key>

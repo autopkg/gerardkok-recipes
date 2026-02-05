@@ -3,20 +3,35 @@
 <plist version="1.0">
     <dict>
         <key>Description</key>
-        <string>Downloads the latest version of the Helm CLI.</string>
+        <string>Downloads the latest version of the Helm CLI. Set ARCH to either arm64 or x86_64.</string>
         <key>Identifier</key>
         <string>com.github.gerardkok.download.Helm</string>
         <key>Input</key>
         <dict>
             <key>NAME</key>
             <string>Helm</string>
-            <key>PLATFORM_ARCH</key>
-            <string>amd64</string>
+            <key>ARCH</key>
+            <string>arm64</string>
         </dict>
         <key>MinimumVersion</key>
-        <string>0.3.1</string>
+        <string>2.7.6</string>
         <key>Process</key>
         <array>
+            <dict>
+                <key>Processor</key>
+                <string>FindAndReplace</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>find</key>
+                    <string>x86_64</string>
+                    <key>input_string</key>
+                    <string>%ARCH%</string>
+                    <key>replace</key>
+                    <string>amd64</string>
+                    <key>result_output_var_name</key>
+                    <string>PLATFORM_ARCH</string>
+                </dict>
+            </dict>
             <dict>
                 <key>Processor</key>
                 <string>URLTextSearcher</string>
@@ -29,13 +44,13 @@
                 </dict>
             </dict>
             <dict>
+                <key>Processor</key>
+                <string>URLDownloader</string>
                 <key>Arguments</key>
                 <dict>
                     <key>filename</key>
                     <string>%NAME%.tar.gz</string>
                 </dict>
-                <key>Processor</key>
-                <string>URLDownloader</string>
             </dict>
             <dict>
                 <key>Processor</key>
@@ -52,19 +67,6 @@
                     <string>%checksum%</string>
                     <key>checksum_pathname</key>
                     <string>%pathname%</string>
-                </dict>
-            </dict>
-            <dict>
-                <key>Processor</key>
-                <string>Unarchiver</string>
-                <key>Arguments</key>
-                <dict>
-                    <key>archive_path</key>
-                    <string>%pathname%</string>
-                    <key>destination_path</key>
-                    <string>%RECIPE_CACHE_DIR%/unpacked</string>
-                    <key>purge_destination</key>
-                    <true/>
                 </dict>
             </dict>
         </array>

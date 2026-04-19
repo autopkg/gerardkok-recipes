@@ -57,7 +57,6 @@ fi
         <string>com.github.gerardkok.download.airfoil</string>
         <key>Process</key>
         <array>
-        <dict>
             <dict>
                 <key>Processor</key>
                 <string>DeprecationWarning</string>
@@ -67,27 +66,28 @@ fi
                     <string>This recipe will be removed on July 19, 2026.</string>
                 </dict>
             </dict>
-            <key>Processor</key>
-            <string>PathDeleter</string>
-            <key>Arguments</key>
             <dict>
-                <key>path_list</key>
-                <array>
-                    <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%/Airfoil Satellite.app</string>
-                </array>
+                <key>Processor</key>
+                <string>PathDeleter</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>path_list</key>
+                    <array>
+                        <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%/Airfoil Satellite.app</string>
+                    </array>
+                </dict>
             </dict>
-        </dict>
-        <dict>
-            <key>Processor</key>
-            <string>DmgCreator</string>
-            <key>Arguments</key>
             <dict>
-                <key>dmg_path</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
-                <key>dmg_root</key>
-                <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%</string>
+                <key>Processor</key>
+                <string>DmgCreator</string>
+                <key>Arguments</key>
+                <dict>
+                    <key>dmg_path</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+                    <key>dmg_root</key>
+                    <string>%RECIPE_CACHE_DIR%/%NAME%/%NAME%</string>
+                </dict>
             </dict>
-        </dict>
             <dict>
                 <key>Processor</key>
                 <string>MunkiImporter</string>

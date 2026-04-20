@@ -61,7 +61,7 @@
                 <key>Arguments</key>
                 <dict>
                     <key>warning_message</key>
-                    <string>This recipe will be removed on July 19, 2026.</string>
+                    <string>This recipe will be removed on July 19, 2026. Switch to com.github.kevinmcox.munki.Helm</string>
                 </dict>
             </dict>
             <dict>
